@@ -1,0 +1,18 @@
+{
+  "name": "marketplaceclevertrading",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "build:back": "cd backend && tsc",
+    "build:front": "cd frontend && ng build",
+    "build": "npm run build:back && npm run build:front",
+    "start:back": "cd backend && node dist/index.js",
+    "start:front": "cd frontend && npm run start",
+    "start": "concurrently \"npm run start:back\" \"npm run start:front\"",
+    "dev": "concurrently \"cd backend && npm run build && npm run start:back\" \"cd frontend && ng serve\"",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
