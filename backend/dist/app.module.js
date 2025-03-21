@@ -41,9 +41,13 @@ Object.defineProperty(exports, "__esModule", { value: true });
 exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_module_1 = require("./prisma/prisma.module");
+const users_module_1 = require("./modules/user/users.module");
 let AppModule = (() => {
     let _classDecorators = [(0, common_1.Module)({
-            imports: [prisma_module_1.PrismaModule],
+            imports: [
+                prisma_module_1.PrismaModule,
+                users_module_1.UserModule
+            ],
         })];
     let _classDescriptor;
     let _classExtraInitializers = [];

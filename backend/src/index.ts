@@ -1,3 +1,28 @@
-// src/app.ts
+import { NestFactory } from '@nestjs/core';
+import { AppModule } from './app.module';
+import { ValidationPipe } from '@nestjs/common';
+import { PrismaService } from './prisma/prisma.service';
+import 'dotenv/config';
 
-console.log("Hello, world!");  // Simple ejemplo de aplicación
+async function bootstrap() {
+  const app = await NestFactory.create(AppModule);
+  const port = process.env.PORT ?? 3000;
+  const host = process.env.HOST ?? '0.0.0.0';
+
+  // Habilitar el cierre limpio de Prisma
+  const prismaService = app.get(PrismaService);
+  await prismaService.enableShutdownHooks(app);
+
+  // Habilitar las validaciones globalmente
+  app.useGlobalPipes(new ValidationPipe({
+    whitelist: true,
+    forbidNonWhitelisted: true, 
+    transform: true, 
+  }));
+
+  await app.listen(port, host);
+  console.log(`🚀 Servidor corriendo en http://${host}:${port}`);
+}
+
+bootstrap();
+

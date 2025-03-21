@@ -1,33 +1,19 @@
 {
   "compilerOptions": {
-    // Versión de ECMAScript a la que se compilará el código
-    "target": "es2016",                   
-
-    // Especifica el sistema de módulos. "commonjs" es el estándar para Node.js
-    "module": "commonjs",                  
-
-    // Carpeta donde se generará el código JavaScript compilado
-    "outDir": "./dist",                    
-
-    // Carpeta donde están los archivos TypeScript originales
-    "rootDir": "./src",                    
-
-    // Habilita comprobaciones estrictas de tipado
-    "strict": true,                        
-
-    // Permite importar módulos de ES6 de manera más sencilla
-    "esModuleInterop": true,               
-
-    // Obliga a que los archivos se importen con el mismo uso de mayúsculas y minúsculas
+    "target": "ES6",
+    "module": "commonjs",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
     "forceConsistentCasingInFileNames": true,
-
-    // Evita que TypeScript verifique tipos en archivos de bibliotecas externas
-    "skipLibCheck": true                    
+    "moduleResolution": "node",
+    "outDir": "./dist",
+    "baseUrl": "./",
+    "paths": {
+      "@prisma/client": ["./node_modules/@prisma/client"]
+    }
   },
-  // Especifica qué archivos incluir en la compilación
-  "include": ["src"],                       
-
-  // Especifica qué carpetas excluir de la compilación
-  "exclude": ["node_modules", "dist"]       
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
 }
 

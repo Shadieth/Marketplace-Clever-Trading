@@ -1,0 +1,18 @@
+{
+  "compilerOptions": {
+    "target": "ES6",                           // Compila a ECMAScript 6 (puedes cambiar a 'ESNext' si prefieres usar características más recientes)
+    "module": "commonjs",                      // Usa el sistema de módulos 'CommonJS' (típico para Node.js)
+    "strict": true,                             // Habilita todas las opciones estrictas de TypeScript
+    "esModuleInterop": true,                    // Permite la importación de módulos comunes de Node.js (necesario para módulos como 'prisma')
+    "skipLibCheck": true,                       // Omite la verificación de tipos de archivos en las dependencias
+    "forceConsistentCasingInFileNames": true,   // Asegura que los nombres de archivo sean consistentes en el proyecto
+    "moduleResolution": "node",                 // Usa la resolución de módulos de Node.js
+    "outDir": "./dist",                         // Directorio donde se emitirá el código compilado
+    "baseUrl": "./",                            // Establece la base para resolver rutas
+    "paths": {
+      "@prisma/client": ["./node_modules/@prisma/client"] // Resuelve las rutas de Prisma correctamente
+    }
+  },
+  "include": ["src/**/*.ts"],                    // Archivos fuente de TypeScript (en la carpeta src)
+  "exclude": ["node_modules", "dist"]            // Archivos y carpetas a excluir del compilado
+}

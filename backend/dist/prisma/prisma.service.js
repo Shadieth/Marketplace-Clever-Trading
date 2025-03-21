@@ -57,14 +57,28 @@ let PrismaService = (() => {
     let _classThis;
     let _classSuper = client_1.PrismaClient;
     var PrismaService = _classThis = class extends _classSuper {
+        constructor() {
+            super();
+        }
         onModuleInit() {
             return __awaiter(this, void 0, void 0, function* () {
                 yield this.$connect();
+                console.log('✅ Conectado a PostgreSQL con Prisma');
             });
         }
         onModuleDestroy() {
             return __awaiter(this, void 0, void 0, function* () {
                 yield this.$disconnect();
+                console.log('🔌 Prisma desconectado correctamente');
+            });
+        }
+        enableShutdownHooks(app) {
+            return __awaiter(this, void 0, void 0, function* () {
+                app.enableShutdownHooks();
+                process.on('beforeExit', () => __awaiter(this, void 0, void 0, function* () {
+                    yield this.$disconnect();
+                    console.log('🔌 Prisma se desconectó antes de salir');
+                }));
             });
         }
     };

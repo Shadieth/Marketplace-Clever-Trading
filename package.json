@@ -10,9 +10,19 @@
     "start:front": "cd frontend && npm run start",
     "start": "concurrently \"npm run start:back\" \"npm run start:front\"",
     "dev": "concurrently \"cd backend && npm run build && npm run start:back\" \"cd frontend && ng serve\"",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prisma:migrate": "npx prisma migrate dev --schema=./backend/prisma/schema.prisma --dotenv=./backend/.env",
+    "prisma:generate": "npx prisma generate --schema=./backend/prisma/schema.prisma --dotenv=./backend/.env"
+  },
+  "prisma": {
+    "schema": "./backend/prisma/schema.prisma"
   },
   "devDependencies": {
     "concurrently": "^9.1.2"
+  },
+  "dependencies": {
+    "@nestjs/common": "^X.X.X",
+    "@prisma/client": "^6.5.0",
+    "dotenv": "^16.4.7"
   }
 }
