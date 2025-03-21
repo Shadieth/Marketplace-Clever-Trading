@@ -1,14 +1,23 @@
-import { Controller, Get } from '@nestjs/common';
-import { UserService } from '../user/services/get-all-users.services'; // Importa correctamente tu servicio
+import { Controller, Post, Body, Get } from '@nestjs/common';
+import { CreateUserService } from './services/create-user.service';
+import { GetAllUsersService } from './services/get-all-users.services';
+import { CreateUserDto } from './dtos/create-user.dto';
 
-
-@Controller('users') // Ruta base '/users'
+@Controller('users')
 export class UserController {
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly createUserService: CreateUserService,
+    private readonly getAllUsersService: GetAllUsersService,
+  ) {}
 
-  // Método GET para obtener todos los usuarios
-  // @Get()
-  // async getAllUsers(): Promise<User[]> {
-  //   return this.userService.getAllUsers(); // Llama al método getAllUsers del servicio
-  // }
+  @Post()
+  async createUser(@Body() createUserDto: CreateUserDto) {
+    return this.createUserService.createUser(createUserDto);
+  }
+
+   // Método para obtener todos los usuarios
+  @Get()
+  async getAll() {
+    return this.getAllUsersService.getAllUsers();
+  }
 }

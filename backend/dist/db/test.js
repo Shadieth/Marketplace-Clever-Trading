@@ -12,13 +12,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const db_1 = require("./db");
 function main() {
     return __awaiter(this, void 0, void 0, function* () {
-        const user = yield db_1.prisma.user.create({
-            data: {
-                name: "Shadieth",
-                email: "shadieth@example.com",
-            },
-        });
-        console.log("✅ Usuario creado:", user);
+        //
     });
 }
 main()

@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { UserRepository } from '../users.repository';
+import { User } from '../interfaces/user.interface';
 
 @Injectable()
-export class UserService {
+export class GetAllUsersService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  // Método para obtener todos los usuarios
-  // async getAllUsers(): Promise<User[]> {
-  //   return this.userRepository.findAll(); // Prisma buscará todos los usuarios
-  // }
+  async getAllUsers(): Promise<User[]> {
+    console.log('Fetching all users...');
+    return await this.userRepository.findAll();
+  }
 }

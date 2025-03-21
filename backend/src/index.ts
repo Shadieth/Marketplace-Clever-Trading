@@ -6,8 +6,8 @@ import 'dotenv/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const port = process.env.PORT ?? 3000;
-  const host = process.env.HOST ?? '0.0.0.0';
+  const port = process.env.PORT ?? 3001;
+  const host = process.env.HOST ?? 'localhost';
 
   // Habilitar el cierre limpio de Prisma
   const prismaService = app.get(PrismaService);
