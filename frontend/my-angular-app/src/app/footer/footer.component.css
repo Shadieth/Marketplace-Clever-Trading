@@ -1,0 +1,161 @@
+/* Estilos generales */
+.footer-container {
+    background-color: #1a1a1a;
+    color: white;
+    padding: 30px;
+    font-family: 'Open Sans', sans-serif;
+    max-width: none; /* Se eliminó la restricción */
+    width: 100%; /* Ahora ocupa toda la pantalla */
+}
+  
+/* Sección superior del footer */
+.footer-top {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    max-width: 100%;
+    margin: 0 auto;
+    border-bottom: 1px solid #444;
+    padding-bottom: 20px;
+}
+
+/* Logo y descripción */
+.footer-about {
+    max-width: 300px; /* Limita el ancho de la descripción */
+    word-wrap: break-word;
+    white-space: normal;
+}
+
+.footer-logo {
+    width: 120px;
+    margin-bottom: 10px;
+}
+
+.footer-text {
+    font-size: 14px;
+    color: #ccc;
+}
+
+/* Secciones de enlaces */
+.footer-section {
+    min-width: 180px;
+    flex: 1;
+}
+
+.footer-section h3 {
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.footer-section ul {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-section ul li {
+    margin-bottom: 8px;
+}
+
+.footer-section ul li a {
+    color: #aaa;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.footer-section ul li a:hover {
+    color: white;
+}
+
+/* Medios sociales */
+.footer-socials {
+    display: flex;
+    flex-direction: column;
+    gap: 5px; /* Espacio uniforme entre los elementos */
+}
+
+/* Estilizar cada enlace social */
+.footer-socials a {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Reduce la separación entre el icono y el texto */
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+}
+
+/* Ajustar los iconos sociales */
+.footer-socials .material-icons {
+    font-size: 18px;
+    vertical-align: middle;
+    color: #bbb;
+}
+
+/* Métodos de pago */
+.footer-payments {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    padding: 20px 0;
+    max-width: 800px; /* Limita el ancho para que no se desplacen */
+    margin: auto;
+}
+
+.footer-payments img {
+    width: 50px;
+    height: auto;
+    filter: brightness(0.8);
+}
+
+/* Información de la empresa */
+.footer-company {
+    text-align: center;
+    font-size: 12px;
+    color: #aaa;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* Enlace de configuración de cookies */
+.cookie-settings {
+    color: #007bff;
+    text-decoration: none;
+}
+
+.cookie-settings:hover {
+    text-decoration: underline;
+}
+.footer-payments {
+    display: flex;
+    justify-content: center;
+    gap: 10%; /* Espaciado entre cada método de pago */
+}
+
+.payment-item {
+    display: flex;
+    flex-direction: column; /* Asegura que el ícono y el texto estén en columna */
+    align-items: center; /* Centra los elementos en la columna */
+    text-align: center;
+}
+
+.footer-payments i {
+    font-size: 60px; /* Ajusta el tamaño de los iconos */
+    color: white;
+}
+
+.footer-payments p {
+    font-size: 8px;
+    color: white;
+    margin-top: 5px; /* Espacio entre icono y texto */
+    text-transform: uppercase; /* Convierte el texto en mayúsculas */
+}
+
+/* Ajuste para mejorar la responsividad */
+@media (max-width: 768px) {
+    .footer-socials {
+        flex-direction: row;
+        justify-content: center;
+        gap: 15px;
+    }
+}

@@ -1,0 +1,25 @@
+<div class="languages-container">
+    <h2 class="section-title">Idiomas Disponibles</h2>
+    
+    <div class="languages-grid">
+        <div class="language-item" *ngFor="let language of languages">
+          <span class="flag-icon {{ language.flagClass }}"></span>
+          <span class="language-name">{{ language.name }}</span>
+        </div>
+      </div>  
+          
+  
+    <div class="register-box">
+      <div class="register-icon">
+        <span class="material-symbols-outlined">account_circle</span>
+      </div>
+      <h3 class="register-title">Regístrese ahora</h3>
+      <p class="register-text">Únase a nuestra comunidad de hablantes en diferentes idiomas</p>
+      <div class="register-buttons">
+        <button class="btn-sell">Quiero vender</button>
+        <button class="btn-buy">Quiero comprar</button>
+      </div>
+    </div>
+</div>
+  
+  

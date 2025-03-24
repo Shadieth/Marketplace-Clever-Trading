@@ -1,0 +1,192 @@
+ /* Contenedor Principal */
+/* Contenedor Principal */
+.newsletter-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #005b96; /* Azul oscuro */
+    padding: 15px;
+    border-radius: 8px 0px 0px 0px;
+    color: white;
+    width: 100%;
+    padding: 20px; /* Agrega un poco de espacio lateral */
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  /* Contenedor en una fila */
+  .newsletter-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%; /* Ocupa todo el espacio disponible */
+    flex-wrap: wrap; /* Para evitar desbordamiento en pantallas pequeñas */
+  }
+  
+  /* Sección de Información */
+  .newsletter-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex: 1;
+    min-width: 300px;
+  }
+  
+  .newsletter-icon {
+    font-size: 32px;
+    color: #a3c9ff;
+  }
+  
+  .newsletter-info h2 {
+    font-size: 18px; /* ✅ Tamaño reducido para que encaje */
+    font-weight: bold;
+    margin: 0;
+  }
+  
+  .newsletter-info p {
+    font-size: 12px; /* ✅ Más pequeño para ahorrar espacio */
+    color: #c0dfff;
+    margin: 0;
+  }
+  
+  /* Formulario */
+  .newsletter-form {
+    display: flex;
+    gap: 8px;
+    align-items: center;
+    flex: 1;
+    justify-content: flex-end;
+    min-width: 450px;
+  }
+  
+  /* Input y Select */
+  .newsletter-input, .newsletter-select, .newsletter-button {
+    padding: 8px;
+    border-radius: 5px;
+    border: none;
+    font-size: 14px;
+    font-family: 'Open Sans', sans-serif;
+  }
+  
+  .newsletter-input {
+    width: 180px;
+    background-color: #f2f2f2;
+    color: black;
+    border: 1px solid #ccc;
+  }
+  
+  .newsletter-select {
+    width: 180px;
+    border: 1px solid #ccc;
+  }
+  
+  .newsletter-button {
+    background-color: #3399ff;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 8px 12px;
+    border: 1px solid #007bff;
+  }
+  
+  .newsletter-button:hover {
+    background-color: #007bff;
+  }
+  
+  /* ✅ Texto de Política de Privacidad */
+  .newsletter-privacy {
+    font-size: 10px; /* ✅ Reducido para que no ocupe mucho */
+    color: #c0dfff;
+    text-align: right;
+    width: 100%;
+    margin-top: 5px;
+    max-width: 600px;
+    margin-left: auto;
+  }
+  .newsletter-container {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    max-width: 97.5%;
+    margin: 0 auto;
+    padding: 30px 20px; /* Espaciado interno */
+    background-color: #004a80; /* Azul oscuro */
+    border-radius: 8px 8px 0px 0px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Estilos para el título */
+.newsletter-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: white;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Ícono del título */
+.newsletter-title .material-icons {
+    font-size: 28px;
+    color: white;
+}
+
+/* Contenedor del formulario */
+.newsletter-form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    max-width: 800px;
+}
+
+/* Input y select */
+.newsletter-input, .newsletter-select {
+    padding: 10px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    outline: none;
+    width: 100%;
+    max-width: 250px;
+}
+
+/* Botón de suscripción */
+.newsletter-button {
+    background-color: #007bff;
+    color: white;
+    font-size: 16px;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.newsletter-button:hover {
+    background-color: #0056b3;
+}
+
+/* Texto de política de privacidad */
+.newsletter-policy {
+    font-size: 12px;
+    color: #aaa;
+    margin-top: 10px;
+    text-align: center;
+}
+
+/* Ajuste responsivo */
+@media (max-width: 768px) {
+    .newsletter-form {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .newsletter-input, .newsletter-select {
+        max-width: 90%;
+    }
+}

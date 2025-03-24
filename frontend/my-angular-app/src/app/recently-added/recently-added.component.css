@@ -1,0 +1,217 @@
+/* Contenedor principal */
+.recently-added-container {
+    font-family: 'Open Sans', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Título de la sección */
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff; /* Azul */
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Mantiene el enlace a la derecha */
+    gap: 8px; /* Reduce separación entre el icono y el texto */
+    width: 100%;
+}
+/* Asegura que el icono y el texto estén juntos */
+.title-container {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+/* Icono de la sección */
+.section-icon {
+    font-size: 28px;
+    color: #007bff; /* Azul */
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Grid de productos */
+.recently-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+/* Tarjeta de producto */
+.recently-card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    width: 280px;
+    flex-shrink: 0;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.recently-card:hover {
+    transform: scale(1.05);
+}
+
+/* Imagen del producto */
+.recently-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+}
+
+.recently-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Etiqueta de nuevo */
+.recently-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: green;
+    color: white;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.recently-label .material-icons {
+    font-size: 14px;
+    color: white;
+}
+
+/* Detalles del producto */
+.recently-details {
+    padding: 10px;
+}
+
+.recently-price {
+    font-size: 18px;
+    color: red;
+}
+
+.recently-unit {
+    font-size: 14px;
+    color: gray;
+}
+
+/* Descripción del producto */
+.recently-description {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+}
+
+/* Meta información (Stock, Categoría) */
+.recently-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: gray;
+    margin-top: 10px;
+    align-items: center;
+}
+
+/* Iconos de Material Icons */
+.recently-meta .material-icons {
+    font-size: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #666;
+}
+
+/* Asegura que el enlace esté a la derecha */
+.view-all {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-left: auto; /* Mantiene el enlace en la esquina derecha */
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+/* Asegura que los iconos sean visibles */
+.material-symbols-outlined {
+    font-size: 28px;
+    color: #007bff; /* Azul */
+    margin-right: 5px;
+    vertical-align: middle;
+}
+.recently-added-container {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 30px 20px; /* Espacio en la parte superior e inferior */
+    background-color: #f8f9fa; /* Fondo claro */
+    border-radius: 10px;
+}
+
+/* Ajuste del título */
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #007bff; /* Azul */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px; /* Espaciado interno */
+}
+
+/* Enlace "Ver todas" */
+.view-all {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px; /* Espaciado a la derecha */
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+/* Grid de productos */
+.recently-grid {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    padding: 10px 0;
+}
+
+/* Tarjeta del producto */
+.recently-card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.recently-card:hover {
+    transform: scale(1.05);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .section-title {
+        flex-direction: column;
+        text-align: left;
+        padding: 10px;
+    }
+
+    .view-all {
+        align-self: flex-start;
+        margin-top: 5px;
+    }
+}

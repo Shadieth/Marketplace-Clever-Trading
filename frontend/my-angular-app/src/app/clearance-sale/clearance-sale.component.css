@@ -1,0 +1,181 @@
+/* Contenedor principal con fondo azul */
+.clearance-sale-container {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    padding: 20px; /* Agrega un poco de espacio lateral */
+    background-color: #007bff; /* Azul */
+    border-radius: 10px;
+}
+
+/* Título con color verde */
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: white; /* Verde claro */
+    display: flex;
+    align-items: left;
+    margin-left: auto;
+    justify-content: space-between;
+    padding: 10px; /* Espaciado interno */
+}
+
+/* Icono de la sección */
+.section-icon {
+    font-size: 28px;
+    color: white; /* Verde claro */
+    margin-right: 5px;
+    vertical-align: middle;
+}
+
+/* Grid de productos en 4 columnas y 2 filas */
+.clearance-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr); /* 4 columnas */
+    grid-template-rows: repeat(2, auto); /* 2 filas */
+    gap: 10px;
+    padding: 10px 0;
+}
+
+/* Tarjeta de producto */
+.clearance-card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+    margin: 5%;
+}
+
+.clearance-card:hover {
+    transform: scale(1.05);
+}
+
+/* Imagen del producto */
+.clearance-image {
+    position: relative;
+    width: 100%;
+    height: 180px;
+}
+
+.clearance-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Etiqueta de liquidación */
+.clearance-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: red;
+    color: white;
+    padding: 5px 8px;
+    font-size: 12px;
+    font-weight: bold;
+    border-radius: 3px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.clearance-label .material-icons {
+    font-size: 14px;
+    color: white;
+}
+
+/* Detalles del producto */
+.clearance-details {
+    padding: 10px;
+}
+
+.clearance-price {
+    font-size: 18px;
+    color: red;
+}
+
+.clearance-unit {
+    font-size: 14px;
+    color: gray;
+}
+
+/* Descripción del producto */
+.clearance-description {
+    font-size: 14px;
+    color: #333;
+    margin: 5px 0;
+}
+
+/* Meta información (Stock, Categoría) */
+.clearance-meta {
+    display: flex;
+    justify-content: space-between;
+    font-size: 12px;
+    color: gray;
+    margin-top: 10px;
+    align-items: center;
+}
+
+/* Iconos de Material Icons */
+.clearance-meta .material-icons {
+    font-size: 16px;
+    vertical-align: middle;
+    margin-right: 5px;
+    color: #666;
+}
+
+/* Enlace "Ver todas" */
+.view-all {
+    font-size: 14px;
+    color: white;
+    text-decoration: none;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+.clearance-sale-container {
+    width: 100%;
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 20px 0;
+    background-color: #007bff; /* Color azul de fondo */
+  }
+  
+  .clearance-sale-title {
+    text-align: left;
+    font-size: 24px;
+    font-weight: bold;
+    color: white;
+    margin-left: 20px;
+  }
+  
+  .clearance-sale-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 10px;
+  }
+  
+  .clearance-sale-item {
+    width: calc(25% - 20px); /* 4 columnas en pantallas grandes */
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    text-align: center;
+  }
+  
+  @media (max-width: 1024px) {
+    .clearance-sale-item {
+      width: calc(50% - 20px); /* 2 columnas en tablets */
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .clearance-sale-item {
+      width: 100%; /* 1 columna en móviles */
+    }
+  }  

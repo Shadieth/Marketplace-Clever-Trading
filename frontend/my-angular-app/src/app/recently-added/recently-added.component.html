@@ -1,0 +1,33 @@
+<div class="recently-added-container">
+    <h2 class="section-title">
+        <div class="title-container">
+          <span class="material-symbols-outlined section-icon">new_releases</span> Recientemente Añadidos
+        </div>
+        <a href="#" class="view-all">Ver todas &raquo;</a>
+      </h2>
+      
+    
+    <div class="recently-grid">
+      <div class="recently-card" *ngFor="let product of recentlyAddedProducts">
+        <div class="recently-image">
+          <span class="recently-label">
+            <span class="material-icons">fiber_new</span>
+          </span>
+          <img [src]="product.image" alt="Nuevo producto">
+        </div>
+        <div class="recently-details">
+          <span class="recently-price"><strong>{{ product.price }}</strong> <span class="recently-unit">{{ product.unit }}</span></span>
+          <p class="recently-description">{{ product.description }}</p>
+          <div class="recently-meta">
+            <span class="recently-stock">
+              <span class="material-icons">shopping_cart</span> {{ product.stock }}
+            </span>
+            <span class="recently-category">
+              <span class="material-icons">category</span> {{ product.category }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

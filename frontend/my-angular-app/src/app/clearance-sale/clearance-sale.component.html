@@ -1,0 +1,30 @@
+<div class="clearance-sale-container">
+    <h2 class="section-title">
+       Liquidación
+      <a href="#" class="view-all">Ver todas &raquo;</a>
+    </h2>
+    
+    <div class="clearance-grid">
+      <div class="clearance-card" *ngFor="let product of clearanceProducts">
+        <div class="clearance-image">
+          <span class="clearance-label">
+            <span class="material-icons">local_offer</span>
+          </span>
+          <img [src]="product.image" alt="Producto en liquidación">
+        </div>
+        <div class="clearance-details">
+          <span class="clearance-price"><strong>{{ product.price }}</strong> <span class="clearance-unit">{{ product.unit }}</span></span>
+          <p class="clearance-description">{{ product.description }}</p>
+          <div class="clearance-meta">
+            <span class="clearance-stock">
+              <span class="material-icons">shopping_cart</span> {{ product.stock }}
+            </span>
+            <span class="clearance-category">
+              <span class="material-icons">category</span> {{ product.category }}
+            </span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  

@@ -1,0 +1,255 @@
+/* Contenedor principal */
+/* Estilos generales */
+.languages-container {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 20px;
+    background: #007bff; /* Azul */
+    border-radius: 10px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Título */
+.section-title {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+/* Grid de idiomas */
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(2, auto);
+    gap: 15px;
+    text-align: center;
+    justify-content: center;
+    padding: 10px;
+}
+
+/* Cada idioma */
+.language-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 16px;
+    color: white;
+}
+
+.language-item img {
+    width: 30px;
+    height: auto;
+    border-radius: 3px;
+}
+
+/* Contenedor de registro */
+.register-box {
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 250px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Icono de usuario */
+.register-icon {
+    font-size: 40px;
+    color: gray;
+}
+
+/* Título del registro */
+.register-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+/* Texto del registro */
+.register-text {
+    font-size: 14px;
+    color: #666;
+}
+
+/* Botones de acción */
+/* Botón base */
+.btn {
+    border: none;
+    padding: 14px 32px;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease-in-out;
+    display: inline-block;
+    text-align: center;
+    min-width: 180px;
+    font-family: 'Open Sans', sans-serif; /* Asegurar la fuente del proyecto */
+}
+
+/* Botón "Quiero vender" */
+.btn-sell {
+    background: #222;
+    color: white;
+}
+
+.btn-sell:hover {
+    background: #000;
+    transform: scale(1.03);
+}
+
+/* Botón "Quiero comprar" */
+.btn-buy {
+    background: #f5a623;
+    color: white;
+}
+
+.btn-buy:hover {
+    background: #d98a1e;
+    transform: scale(1.03);
+}
+
+/* Contenedor de los botones */
+.register-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 15px;
+}
+/* Contenedor principal */
+.register-box {
+    background: white;
+    color: black;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    width: 320px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.15);
+    font-family: 'Open Sans', sans-serif; /* Usa la fuente del proyecto */
+}
+
+/* Icono de usuario */
+.register-icon {
+    width: 60px;
+    height: 60px;
+    background-color: #e0e0e0;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+}
+
+.register-icon span {
+    font-size: 32px;
+    color: #666;
+}
+
+/* Título */
+.register-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+    color: #222;
+}
+
+/* Texto del registro */
+.register-text {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+}
+
+/* Botones de acción */
+.register-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+/* Botón negro */
+.btn-sell {
+    background: black;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-sell:hover {
+    background: #333;
+}
+
+/* Botón amarillo */
+.btn-buy {
+    background: #f5a623;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.btn-buy:hover {
+    background: #e69500;
+}
+/* Aumentar el tamaño de los idiomas */
+.language-item {
+    display: flex;
+    align-items: center;
+    gap: 12px; /* Espacio entre la bandera y el texto */
+    font-size: 18px; /* Tamaño de fuente más grande */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+/* Aumentar el tamaño de las banderas */
+.language-flag {
+    width: 40px; /* Aumenta el ancho */
+    height: 26px; /* Aumenta la altura */
+    border-radius: 5px; /* Bordes ligeramente redondeados */
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+}
+
+/* Ajustar la grilla para que las filas tengan más espacio */
+.languages-grid {
+    display: grid;
+    grid-template-columns: repeat(4, auto);
+    grid-template-rows: repeat(2, auto);
+    gap: 60px 40px; /* Aumenta el espacio entre las filas (20px) y entre las columnas (40px) */
+    text-align: center;
+    justify-content: center;
+    padding: 15px;
+}
+
+/* Ajuste para pantallas pequeñas */
+@media (max-width: 768px) {
+    .languages-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .languages-grid {
+        grid-template-columns: repeat(2, auto);
+        grid-template-rows: repeat(4, auto);
+    }
+
+    .register-box {
+        margin-top: 20px;
+    }
+}

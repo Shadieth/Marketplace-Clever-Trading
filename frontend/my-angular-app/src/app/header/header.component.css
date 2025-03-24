@@ -1,0 +1,276 @@
+  /* Estilos generales */
+.header {
+    font-family: Arial, sans-serif;
+    width: 100%;
+    max-width: none;
+  }
+ 
+  /* Barra superior */
+  .top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+    background: white;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  .logo-img {
+    width: auto;
+    max-width: 200px;
+    height: auto;
+    display: block;
+  }
+  
+  /* Contenedor de la barra de búsqueda */
+.search-container {
+    display: flex;
+    align-items: center;
+    background: #f8f8f8;
+    padding: 5px;
+    border-radius: 5px;
+  }
+  
+  /* Contenedor del dropdown */
+    .dropdown {
+    position: relative;
+    display: inline-block;
+  }
+  
+  /* Botón del desplegable */
+  .dropbtn {
+    background-color: white; /* Fondo blanco por defecto */
+    color: black;
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    font-size: 14px;
+    min-width: 140px;
+    text-align: left;
+    transition: background-color 0.3s ease; /* Transición suave */
+  }
+  
+  /* Estilo cuando el botón está activo */
+  .dropbtn.active {
+    background-color: #ddd; /* Color gris cuando se hace clic */
+  }
+  
+  /* Contenido del desplegable */
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: white;
+    min-width: 140px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    z-index: 1;
+  }
+  
+  /* Mostrar el menú cuando el botón tiene la clase .active */
+  .dropdown.active .dropdown-content {
+    display: block;
+  }
+  
+  /* Elementos dentro del desplegable */
+  .dropdown-content a {
+    color: black;
+    padding: 10px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {
+    background-color: #ddd;
+  }
+  
+  
+  /* Input de búsqueda */
+  .search-input {
+    border: none;
+    padding: 10px;
+    width: 200px;
+    outline: none;
+    background: #ffffff;
+  }
+  
+  /* Botón de búsqueda */
+  .search-button {
+    background: #007bff;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+  }
+  
+  /* Contenedor de la sesión del usuario */
+.user-session {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Espacio entre la imagen y el texto */
+  }
+  
+  /* Imagen del usuario */
+  .user-image {
+    width: 40px; /* Tamaño fijo para mantener la proporción */
+    height: 40px; /* Altura fija para hacerla circular */
+    border-radius: 50%; /* Imagen redonda */
+    object-fit: cover; /* Recorta la imagen para que llene el espacio sin distorsionarse */
+    border: 1px solid #ccc; /* Borde ligero */
+    overflow: hidden; /* Asegura que la imagen no sobresalga del borde */
+  }  
+  
+  /* Contenedor del texto */
+  .user-text {
+    display: flex;
+    flex-direction: column; /* Poner "Bienvenido!" arriba y los enlaces abajo */
+    font-size: 14px;
+    line-height: 1.2;
+  }
+  
+  /* Estilo del texto "Bienvenido!" */
+  .welcome-text {
+    color: gray;
+    font-size: 14px;
+  }
+  
+  /* Contenedor de los enlaces */
+  .session-links {
+    display: flex;
+    gap: 5px; /* Espacio entre los enlaces */
+  }
+  
+  /* Estilo de los enlaces */
+  .session-links a {
+    text-decoration: none;
+    font-size: 14px;
+  }
+  
+  .login {
+    color: #007bff;
+  }
+  
+  .register {
+    color: #a3ba51;
+  }
+  
+  
+  /* Barra de información */
+.info-bar {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    background: #f1f1f1;
+    font-size: 14px;
+    color: #666;
+  }
+  
+  /* Elementos individuales */
+  .info-item {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Espaciado entre el icono y el texto */
+  }
+  
+  /* Estilos de los iconos */
+  .icon {
+    font-size: 20px;
+    color: #a3ba51;
+  }  
+  
+/* Barra de navegación */
+.nav-bar {
+    display: flex;
+    align-items: center;
+    background: #007bff;
+    padding: 10px 20px;
+    position: relative; /* Mantenerlo en contexto */
+  }
+  
+  /* Botón de categorías */
+    .menu-button {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    padding-right: 20px; /* Espaciado derecho para separar los enlaces */
+  }
+  
+  
+  /* Contenedor de enlaces */
+    .nav-links {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+    gap: 25px; /* Aumentamos la separación entre los enlaces */
+  }
+  
+  /* Estilo de los enlaces */
+  .nav-links li {
+    margin: 0;
+  }
+  
+  .nav-links a {
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+    transition: color 0.3s ease;
+  }
+  
+  /* Cambio de color al pasar el mouse */
+  .nav-links a:hover {
+    color: #d0d0d0;
+  }
+  
+  /* Botón de añadir oferta */
+  .offer-button {
+    background: #a3ba51;
+    border: none;
+    color: white;
+    padding: 8px 12px;
+    font-size: 14px;
+    margin-left: auto;
+    cursor: pointer;
+  }
+  
+  /* Menú desplegable de categorías */
+  .categories-menu {
+    position: absolute;
+    background: white;
+    width: 250px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    padding: 10px 0;
+    z-index: 1000;
+    transition: all 0.3s ease;
+  }
+  
+  /* Animación al desplegar */
+  .categories-menu ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .categories-menu li {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .categories-menu li:hover {
+    background: #f1f1f1;
+  }
+  
+  /* Iconos de Material Icons */
+  .category-icon {
+    font-size: 20px;
+    margin-right: 10px;
+    color: #007bff;
+  }
+  

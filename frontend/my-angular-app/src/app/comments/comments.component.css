@@ -1,0 +1,261 @@
+/* Contenedor principal */
+.comments-container {
+    font-family: 'Open Sans', sans-serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f8f9fa; /* Fondo claro */
+    border-radius: 10px;
+}
+
+/* Título de la sección */
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000; /* Negro */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* Grid de comentarios en 3 columnas */
+.comments-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* 3 columnas */
+    gap: 20px;
+    padding: 0px 0;
+}
+
+/* Tarjeta de comentario */
+.comment-card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    padding: 20px;
+}
+
+/* Texto del comentario */
+.comment-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 15px;
+}
+/* Pie del comentario con avatar y nombre */
+.comment-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute; /* Fija el pie en la esquina inferior */
+    bottom: 10px; /* Se mantiene pegado al fondo */
+    left: 10px; /* Pegado al borde izquierdo */
+    width: calc(100% - 20px); /* Se ajusta al ancho de la tarjeta */
+}
+
+/* Ajuste en la tarjeta del comentario para que el footer quede dentro */
+.comment-card {
+    position: relative; /* Permite posicionar elementos absolutos dentro */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end; /* Empuja el contenido hacia abajo */
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    padding: 20px;
+    height: 180px; /* Ajustar según la cantidad de texto */
+}
+
+/* Avatar del usuario */
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Nombre del usuario */
+.comment-user {
+    font-size: 16px;
+    font-style: italic;
+    color: #555;
+}
+
+/* Enlace "Ver todas" */
+.view-all {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+/* Tarjeta de comentario */
+.comment-card {
+    position: relative; /* Permite posicionar el footer correctamente */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Asegura que el texto esté arriba y el footer abajo */
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    padding: 20px;
+    height: 220px; /* Ajusta la altura según necesidad */
+}
+
+/* Texto del comentario */
+.comment-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: auto; /* Empuja el texto hacia la parte superior */
+}
+
+/* Pie del comentario con avatar y nombre */
+.comment-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+}
+
+/* Avatar del usuario */
+.comment-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+/* Nombre del usuario */
+.comment-user {
+    font-size: 16px;
+    font-style: italic;
+    color: #555;
+}
+/* Tarjeta de comentario */
+.comment-card {
+    position: relative; /* Permite posicionar el footer correctamente */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Separa el texto y el footer */
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #ddd;
+    padding: 20px;
+    height: 180px; /* REDUCIDO para evitar espacios en blanco */
+}
+
+/* Texto del comentario */
+.comment-text {
+    font-size: 16px;
+    color: #333;
+    margin-bottom: 5px; /* REDUCIDO para acercarlo al footer */
+}
+
+/* Pie del comentario con avatar y nombre */
+.comment-footer {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    width: calc(100% - 20px);
+}
+.comments-container {
+    font-family: 'Open Sans', sans-serif;
+    width: 100%;
+    max-width: 98%;
+    margin: 0 auto;
+    padding: 40px 20px; /* Espaciado */
+    background-color: #f8f9fa; /* Fondo claro */
+    border-radius: 10px;
+}
+
+/* Ajuste del título */
+.section-title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #333; 
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 20px;
+}
+
+/* Enlace "Ver todas" */
+.view-all {
+    font-size: 14px;
+    color: #007bff;
+    text-decoration: none;
+    margin-right: 10px;
+}
+
+.view-all:hover {
+    text-decoration: underline;
+}
+
+/* Contenedor de opiniones */
+.comments-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px 0;
+    justify-content: center;
+}
+
+/* Tarjeta de opinión */
+.comment-card {
+    background: white;
+    border-radius: 5px;
+    box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    border: 1px solid #ddd;
+    transition: transform 0.3s ease;
+}
+
+.comment-card:hover {
+    transform: scale(1.05);
+}
+
+/* Estilo del texto */
+.comment-text {
+    font-size: 14px;
+    color: #333;
+    margin-bottom: 10px;
+}
+
+/* Usuario */
+.comment-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: bold;
+    color: #555;
+    font-size: 14px;
+}
+
+/* Icono de usuario */
+.comment-user-icon {
+    font-size: 24px;
+    color: #007bff;
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .section-title {
+        flex-direction: column;
+        text-align: left;
+    }
+
+    .view-all {
+        align-self: flex-start;
+        margin-top: 5px;
+    }
+}

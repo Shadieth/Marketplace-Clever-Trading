@@ -1,0 +1,17 @@
+<div class="comments-container">
+    <h2 class="section-title">
+      Opiniones de los clientes
+      <a href="#" class="view-all">Ver todas &raquo;</a>
+    </h2>
+    
+    <div class="comments-grid">
+      <div class="comment-card" *ngFor="let comment of comments">
+        <p class="comment-text">"{{ comment.text }}"</p>
+        <div class="comment-footer">
+          <img [src]="comment.avatar" alt="Avatar" class="comment-avatar">
+          <span class="comment-user">{{ comment.user }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+  

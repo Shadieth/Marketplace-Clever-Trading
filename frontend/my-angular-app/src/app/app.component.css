@@ -1,0 +1,93 @@
+/* app.component.css */
+/* Estilos globales para evitar márgenes laterales */
+html, body {
+  overflow-x: hidden; /* Evita el desplazamiento horizontal */
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+/* Asegurar que todos los contenedores ocupen el ancho completo */
+.container {
+  width: 100%;
+  max-width: 100vw;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  overflow-x: hidden; /* Evita scroll horizontal */
+}
+
+/* Cada componente debe ocupar todo el ancho de la pantalla */
+.container > * {
+  width: 100%;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+/* Header y footer sin márgenes laterales */
+.header, .footer {
+  width: 100%;
+  margin: 0;
+  padding: 0px 0;
+}
+
+/* Secciones con fondo de color deben ocupar toda la pantalla */
+.clearance-sale-container, 
+.languages-container, 
+.newsletter-container {
+  width: 100%;
+  max-width: 100vw;
+  margin: 0 auto;
+  padding: 0px;
+}
+
+/* Grid para los productos en oferta */
+.clearance-grid, .offers-grid, .recently-added-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  width: 100%;
+}
+
+/* Evitar que los textos y elementos se desborden */
+.clearance-description, .offer-description, .recently-added-description {
+  word-wrap: break-word;
+  white-space: normal;
+  max-width: 95%;
+}
+
+/* Ajuste de encabezados y títulos */
+h1, h2, h3 {
+  text-align: center;
+  margin-bottom: 0px;
+}
+/* Eliminar márgenes entre los componentes */
+.container > * {
+  margin: 0;
+  padding: 0;
+}
+
+/* Asegurar que los componentes ocupen todo el ancho sin dejar espacios */
+.container {
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0; /* Elimina espacios entre componentes */
+}
+
+/* Ajustar los contenedores individuales para eliminar los espacios */
+.header, 
+.footer, 
+.clearance-sale-container, 
+.recently-added-container, 
+.comments-container, 
+.languages-container, 
+.newsletter-container {
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  padding: 0; /* Si necesitas mantener algo de padding, puedes ajustar aquí */
+}

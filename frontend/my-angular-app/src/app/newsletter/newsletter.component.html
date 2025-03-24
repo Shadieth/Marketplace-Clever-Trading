@@ -1,0 +1,26 @@
+<div class="newsletter-container">
+    <div class="newsletter-content">
+      <div class="newsletter-info">
+        <span class="material-symbols-outlined newsletter-icon">mail</span>
+        <div>
+          <h2>Boletín gratuito</h2>
+          <p>Notificaciones sobre nuevos productos y novedades cada día.</p>
+        </div>
+      </div>
+  
+      <div class="newsletter-form">
+        <input type="email" [(ngModel)]="email" placeholder="Introduzca su dirección" class="newsletter-input">
+        <select [(ngModel)]="selectedCategory" class="newsletter-select">
+          <option value="" disabled selected>Seleccionar la categoría</option>
+          <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+        </select>
+        <button class="newsletter-button" (click)="subscribe()">Apúntame</button>
+      </div>
+    </div>
+  
+    <p class="newsletter-privacy">
+      Al suscribirse a nuestro boletín, da su consentimiento al tratamiento de sus datos personales con fines de marketing.
+    </p>
+  </div>
+  
+  

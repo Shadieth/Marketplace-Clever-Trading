@@ -1,0 +1,111 @@
+  <!-- Barra de navegación -->
+  <header class="header">
+    <div class="top-bar">
+        
+      <div class="logo">
+        <img [src]="logoPath" alt="Logo de la empresa" class="logo-img">
+      </div>
+
+      <!-- Barra de búsqueda -->
+    <div class="search-container">
+        <div class="dropdown" [class.active]="isDropdownOpen">
+            <button class="dropbtn" (click)="toggleDropdown($event)">
+              {{ getCategoryName() }} ▼
+            </button>
+            <div class="dropdown-content" *ngIf="isDropdownOpen">
+              <a *ngFor="let category of categories" (click)="selectCategory(category.value)">
+                {{ category.name }}
+              </a>
+            </div>
+        </div>                 
+        <input type="text"
+          class="search-input"
+          (focus)="hidePlaceholder()"
+          (blur)="showPlaceholder($event)"
+          [placeholder]="isPlaceholderVisible ? 'Palés de electrodomésticos' : ''">
+          <button class="search-button">
+            <span class="material-icons">search</span>
+          </button>
+    </div>
+    <div class="user-session">
+        <img [src]="userImage" alt="Foto de usuario" class="user-image">
+        <div class="user-text">
+          <span class="welcome-text">Bienvenido!</span>
+          <div class="session-links">
+            <a href="#" class="login">Iniciar sesión</a> |
+            <a href="#" class="register">crea una cuenta nueva</a>
+          </div>
+        </div>
+    </div>      
+    </div>
+  
+    <div class="info-bar">
+        <div class="info-item">
+          <span class="material-icons icon">public</span> Ofertas en XX países
+        </div>
+        <div class="info-item">
+          <span class="material-icons icon">groups</span> XX Clientes satisfechos
+        </div>
+        <div class="info-item">
+          <span class="material-icons icon">bolt</span> Ofertas de hasta 90% del precio inicial
+        </div>
+        <div class="info-item">
+          <span class="material-icons icon">handshake</span> Subscripción para distribuidores y mayoristas
+        </div>
+      </div>
+      
+  
+    <!-- Barra de navegación
+    <nav class="nav-bar">
+    <button class="menu-button" (click)="toggleCategoryMenu($event)">
+      <span class="material-icons">menu</span> Categorías
+    </button>
+    
+    <ul class="nav-links">
+      <li><a href="#">Productos</a></li>
+      <li><a href="#">Stocks</a></li>
+      <li><a href="#">Mayoristas</a></li>
+      <li><a href="#">Top ofertas</a></li>
+    </ul>
+  
+    <button class="offer-button">Añadir una oferta +</button>
+  </nav> -->
+  
+  <!-- Submenú de Categorías 
+  <div class="categories-menu" *ngIf="isCategoryMenuOpen">
+    <ul>
+      <li *ngFor="let category of categoryMenu">
+        <span class="material-icons category-icon">{{ category.icon }}</span>
+        <span>{{ category.name }}</span>
+      </li>
+    </ul>
+  </div>-->
+  <!-- Barra de navegación -->
+<nav class="nav-bar">
+    <button class="menu-button" #categoryButton (click)="toggleCategoryMenu($event)">
+      <span class="material-icons">menu</span> Categorías
+    </button>
+    
+    <ul class="nav-links">
+      <li><a href="#">Productos</a></li>
+      <li><a href="#">Stocks</a></li>
+      <li><a href="#">Mayoristas</a></li>
+      <li><a href="#">Top ofertas</a></li>
+    </ul>
+  
+    <button class="offer-button">Añadir una oferta +</button>
+  </nav>
+  
+  <!-- Submenú de Categorías -->
+  <div class="categories-menu" *ngIf="isCategoryMenuOpen"
+       [ngStyle]="{'top': menuPosition.top, 'left': menuPosition.left}">
+    <ul>
+      <li *ngFor="let category of categoryMenu">
+        <span class="material-icons category-icon">{{ category.icon }}</span>
+        <span>{{ category.name }}</span>
+      </li>
+    </ul>
+  </div>
+    
+  </header>
+  
