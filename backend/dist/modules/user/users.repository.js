@@ -32,6 +32,7 @@ let UserRepository = class UserRepository {
                 data: {
                     name: data.name,
                     email: data.email,
+                    password: data.password,
                 },
             });
         });
@@ -39,31 +40,18 @@ let UserRepository = class UserRepository {
     // Obtener todos los usuarios
     findAll() {
         return __awaiter(this, void 0, void 0, function* () {
-            return this.prisma.user.findMany();
+            return this.prisma.user.findMany({
+                orderBy: {
+                    createdAt: 'desc'
+                }
+            });
         });
     }
     // Obtener un usuario por id
     findById(id) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.prisma.user.findUnique({
-                where: { id },
-            });
-        });
-    }
-    // Actualizar un usuario
-    update(id, data) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.prisma.user.update({
-                where: { id },
-                data,
-            });
-        });
-    }
-    // Eliminar un usuario
-    delete(id) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.prisma.user.delete({
-                where: { id },
+                where: { id }
             });
         });
     }

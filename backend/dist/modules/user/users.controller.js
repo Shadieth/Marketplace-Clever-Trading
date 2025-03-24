@@ -36,8 +36,7 @@ let UserController = class UserController {
             return this.createUserService.createUser(createUserDto);
         });
     }
-    // Método para obtener todos los usuarios
-    getAll() {
+    getAllUsers() {
         return __awaiter(this, void 0, void 0, function* () {
             return this.getAllUsersService.getAllUsers();
         });
@@ -56,7 +55,7 @@ __decorate([
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
-], UserController.prototype, "getAll", null);
+], UserController.prototype, "getAllUsers", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [create_user_service_1.CreateUserService,

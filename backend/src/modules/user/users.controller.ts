@@ -15,9 +15,8 @@ export class UserController {
     return this.createUserService.createUser(createUserDto);
   }
 
-   // Método para obtener todos los usuarios
   @Get()
-  async getAll() {
+  async getAllUsers() {
     return this.getAllUsersService.getAllUsers();
   }
 }

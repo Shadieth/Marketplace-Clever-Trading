@@ -7,39 +7,29 @@ export class UserRepository {
   constructor(private readonly prisma: PrismaService) {}
 
   // Crear un nuevo usuario
-  async create(data: { name: string; email: string }): Promise<User> {
+  async create(data: { name: string; email: string; password: string }): Promise<User> {
     return this.prisma.user.create({
       data: {
         name: data.name,
         email: data.email,
+        password: data.password,
       },
     });
   }
 
   // Obtener todos los usuarios
   async findAll(): Promise<User[]> {
-    return this.prisma.user.findMany();
+    return this.prisma.user.findMany({
+      orderBy: {
+        createdAt: 'desc'
+      }
+    });
   }
 
   // Obtener un usuario por id
   async findById(id: string): Promise<User | null> {
     return this.prisma.user.findUnique({
-      where: { id },
-    });
-  }
-
-  // Actualizar un usuario
-  async update(id: string, data: { name?: string; email?: string }): Promise<User> {
-    return this.prisma.user.update({
-      where: { id },
-      data,
-    });
-  }
-
-  // Eliminar un usuario
-  async delete(id: string): Promise<User> {
-    return this.prisma.user.delete({
-      where: { id },
+      where: { id }
     });
   }
 }
