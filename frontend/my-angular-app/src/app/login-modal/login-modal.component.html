@@ -1,0 +1,27 @@
+<div class="modal-overlay">
+    <div class="modal-content">
+      <span class="close-icon material-icons" (click)="closeModal()">close</span>
+      <h2>Inicio de sesión</h2>
+  
+      <form (ngSubmit)="onLogin()">
+        <label>
+          <input type="email" [(ngModel)]="email" name="email" placeholder="Correo electrónico" required />
+        </label>
+  
+        <label class="password-field">
+          <input type="password" [(ngModel)]="password" name="password" placeholder="Contraseña" required />
+          <span class="material-icons eye-icon">visibility</span>
+        </label>
+        <div class="error-message" *ngIf="errorMessage">{{ errorMessage }}</div>
+        <a href="#" class="forgot-password">¿Ha olvidado su contraseña?</a>
+  
+        <button type="submit" class="login-button">Iniciar sesión</button>
+  
+        <p class="bottom-text">
+          ¿Todavía no tienes una cuenta?
+          <a href="/register">Regístrate</a>
+        </p>
+      </form>
+    </div>
+  </div>
+  

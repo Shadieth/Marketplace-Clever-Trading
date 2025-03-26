@@ -12,6 +12,12 @@ async function bootstrap() {
   // Habilitar el cierre limpio de Prisma
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);
+  
+  // Habilitar CORS para que Angular pueda comunicarse con el backend
+  app.enableCors({
+    origin: 'http://localhost:4200',
+    credentials: true
+  });
 
   // Habilitar las validaciones globalmente
   app.useGlobalPipes(new ValidationPipe({

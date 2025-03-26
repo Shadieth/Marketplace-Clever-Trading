@@ -1,0 +1,191 @@
+.register-container {
+    max-width: 98%;
+    margin: 0 auto;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.1);
+    font-family: 'Open Sans', sans-serif;
+    padding-bottom: 5%;
+    margin-bottom: 1%;
+  }
+  
+  /* Título */
+  .register-title {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  /* Contenedor que agrupa formulario y resumen */
+  .register-form-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 0 5%;
+  }
+  
+  /* Formulario */
+  .register-form {
+    flex: 70%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  
+  .register-form label {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    font-weight: 600;
+    color: #333;
+    font-size: 14px;
+  }
+  
+  .register-form input {
+    margin-top: 5px;
+    padding: 10px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    width:200%;
+  }
+  
+  .btn-submit {
+    background: #007bff;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s ease;
+  }
+  
+  .btn-submit:hover {
+    background: #0056b3;
+  }
+  
+  /* Resumen del plan */
+  .plan-summary-box {
+    flex: 0 0 30%;
+    border: 2px solid #e0e0e0;
+    padding: 24px;
+    border-radius: 12px;
+    background-color: #fff;
+    font-size: 15px;
+    margin-left: 20%;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+  }
+  
+  .plan-summary-box h3 {
+    font-size: 1.2rem;
+    color: #a3ba51;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+  }
+  
+  .price-section {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+  
+  .price-original {
+    text-decoration: line-through;
+    color: #999;
+    font-size: 0.9rem;
+  }
+  
+  .discount-tag {
+    background-color: #d00;
+    color: white;
+    font-weight: bold;
+    font-size: 0.8rem;
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+  
+  .price {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .vat {
+    font-size: 0.9rem;
+    color: #888;
+  }
+  
+  .plan-summary-box ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 20px;
+  }
+  
+  .plan-summary-box li {
+    display: flex;
+    align-items: flex-start;
+    margin-bottom: 10px;
+    color: #444;
+  }
+  
+  .plan-summary-box li::before {
+    content: "✔";
+    color: #4CAF50;
+    margin-right: 10px;
+    font-weight: bold;
+  }
+  
+  /* Opcional: personalizar según el plan */
+  .plan-summary-box.premium {
+    border-color: #a3ba51
+  }
+  
+  .plan-summary-box.standard {
+    border-color: #a3ba51;
+  }
+  
+  .form-feedback {
+    margin-top: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .form-feedback.success {
+    background-color: #e0f7e9;
+    color: #2e7d32;
+  }
+  
+  .form-feedback.error {
+    background-color: #ffe0e0;
+    color: #c62828;
+  }
+    
+  /* Responsividad */
+  @media screen and (max-width: 768px) {
+    .register-form-wrapper {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .register-form {
+      max-width: 100%;
+    }
+    .register-form input{
+        max-width: 100%;
+      }  
+    .plan-summary-box {
+      width: 100%;
+      margin-top: 20px;
+    }
+  }
+  
+  

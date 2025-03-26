@@ -23,6 +23,11 @@ function bootstrap() {
         // Habilitar el cierre limpio de Prisma
         const prismaService = app.get(prisma_service_1.PrismaService);
         yield prismaService.enableShutdownHooks(app);
+        // Habilitar CORS para que Angular pueda comunicarse con el backend
+        app.enableCors({
+            origin: 'http://localhost:4200',
+            credentials: true
+        });
         // Habilitar las validaciones globalmente
         app.useGlobalPipes(new common_1.ValidationPipe({
             whitelist: true,
@@ -30,7 +35,7 @@ function bootstrap() {
             transform: true,
         }));
         yield app.listen(port, host);
-        console.log(`🚀 Servidor corriendo en http://${host}:${port}`);
+        console.log(`🚀 Servidor corriendo en cd http://${host}:${port}`);
     });
 }
 bootstrap();

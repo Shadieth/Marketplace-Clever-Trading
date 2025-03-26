@@ -5,6 +5,7 @@ import { PrismaService } from '../../prisma/prisma.service';
 import { CreateUserService } from './services/create-user.service';
 import { GetAllUsersService } from './services/get-all-users.services';
 import { PrismaModule } from '../../prisma/prisma.module';
+import { LoginUserService } from './services/login-user.service';
 
 @Module({
   imports: [PrismaModule],
@@ -12,7 +13,8 @@ import { PrismaModule } from '../../prisma/prisma.module';
   providers: [
     GetAllUsersService,
     CreateUserService, 
-    UserRepository, 
+    UserRepository,
+    LoginUserService, 
     PrismaService],
 })
 export class UserModule {}

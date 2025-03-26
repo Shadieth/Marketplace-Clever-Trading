@@ -1,0 +1,60 @@
+<div class="register-container">
+    <!-- Tabla de Planes -->
+    <app-register-plan-table 
+      [selectedPlan]="selectedPlan" 
+      (planChange)="selectedPlan = $event">
+    </app-register-plan-table>
+  
+    <div class="register-form-wrapper">
+      <!-- Formulario -->
+      <div class="form-section">
+        <h2 class="register-title">Crear cuenta</h2>
+  
+        <form class="register-form" (ngSubmit)="onSubmit()">
+            <label>
+              Nombre completo
+              <input type="text" [(ngModel)]="name" name="name" required />
+            </label>
+          
+            <label>
+              Correo electrónico
+              <input type="email" [(ngModel)]="email" name="email" required />
+            </label>
+          
+            <label>
+              Contraseña
+              <input type="password" [(ngModel)]="password" name="password" required />
+            </label>
+          
+            <label>
+              Repetir contraseña
+              <input type="password" [(ngModel)]="confirmPassword" name="confirmPassword" required />
+            </label>
+          
+            <button type="submit" class="btn-submit">Registrarse</button>
+          
+            <div class="form-feedback success" *ngIf="successMessage">{{ successMessage }}</div>
+            <div class="form-feedback error" *ngIf="errorMessage">{{ errorMessage }}</div>
+          </form>          
+      </div>
+  
+      <!-- Resumen de Plan -->
+      <div class="plan-summary-box" [ngClass]="selectedPlan">
+        <h3>{{ selectedPlan === 'premium' ? 'PREMIUM' : 'ESTÁNDAR' }}</h3>
+      
+        <div class="price-section">
+          <span *ngIf="selectedPlan === 'premium'" class="price-original">79,99 EUR +IVA</span>
+          <span *ngIf="selectedPlan === 'premium'" class="discount-tag">-25%</span>
+        </div>
+      
+        <div class="price">{{ price }} <span class="vat">+IVA / 1 año</span></div>
+      
+        <ul>
+          <li *ngFor="let ventaja of selectedPlan === 'premium' ? ventajasPremium : ventajasStandard">
+            {{ ventaja }}
+          </li>
+        </ul>
+      </div>      
+    </div>
+  </div>
+  
