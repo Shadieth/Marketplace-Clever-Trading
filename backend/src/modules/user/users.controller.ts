@@ -26,4 +26,9 @@ export class UserController {
   async getAllUsers() {
     return this.getAllUsersService.getAllUsers();
   }
+  //creado por mi
+  @Post()
+  async register(@Body() body: { name: string; email: string; password: string }) {
+    return this.createUserService.createUser(body);
+  }
 }
