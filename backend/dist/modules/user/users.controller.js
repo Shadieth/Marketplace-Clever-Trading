@@ -25,11 +25,14 @@ exports.UserController = void 0;
 const common_1 = require("@nestjs/common");
 const create_user_service_1 = require("./services/create-user.service");
 const get_all_users_services_1 = require("./services/get-all-users.services");
+const get_by_email_service_1 = require("./services/get-by-email.service");
 const create_user_dto_1 = require("./dtos/create-user.dto");
+const login_dto_1 = require("./dtos/login.dto");
 let UserController = class UserController {
-    constructor(createUserService, getAllUsersService) {
+    constructor(createUserService, getAllUsersService, getByEmailService) {
         this.createUserService = createUserService;
         this.getAllUsersService = getAllUsersService;
+        this.getByEmailService = getByEmailService;
     }
     createUser(createUserDto) {
         return __awaiter(this, void 0, void 0, function* () {
@@ -39,6 +42,11 @@ let UserController = class UserController {
     getAllUsers() {
         return __awaiter(this, void 0, void 0, function* () {
             return this.getAllUsersService.getAllUsers();
+        });
+    }
+    login(loginDto) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.getByEmailService.login(loginDto.email, loginDto.password);
         });
     }
 };
@@ -56,8 +64,16 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getAllUsers", null);
+__decorate([
+    (0, common_1.Post)('login'),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [login_dto_1.LoginDto]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "login", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [create_user_service_1.CreateUserService,
-        get_all_users_services_1.GetAllUsersService])
+        get_all_users_services_1.GetAllUsersService,
+        get_by_email_service_1.GetByEmailService])
 ], UserController);

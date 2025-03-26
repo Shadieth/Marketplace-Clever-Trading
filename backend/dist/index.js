@@ -30,7 +30,7 @@ function bootstrap() {
             transform: true,
         }));
         yield app.listen(port, host);
-        console.log(`🚀 Servidor corriendo en http://${host}:${port}`);
+        console.log(`🚀 Servidor corriendo en cd http://${host}:${port}`);
     });
 }
 bootstrap();
