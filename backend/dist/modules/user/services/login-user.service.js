@@ -64,20 +64,22 @@ var __rest = (this && this.__rest) || function (s, e) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginUserService = void 0;
 const common_1 = require("@nestjs/common");
-const prisma_service_1 = require("../../../prisma/prisma.service");
 const bcrypt = __importStar(require("bcrypt"));
+const users_repository_1 = require("../users.repository");
 let LoginUserService = class LoginUserService {
-    constructor(prisma) {
-        this.prisma = prisma;
+    constructor(userRepository) {
+        this.userRepository = userRepository;
     }
     login(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
-            const user = yield this.prisma.user.findUnique({ where: { email } });
-            if (!user)
-                throw new common_1.UnauthorizedException('Usuario no encontrado');
+            const user = yield this.userRepository.findByEmail(email);
+            if (!user) {
+                throw new common_1.UnauthorizedException('Credenciales inválidas');
+            }
             const isPasswordValid = yield bcrypt.compare(password, user.password);
-            if (!isPasswordValid)
-                throw new common_1.UnauthorizedException('Contraseña incorrecta');
+            if (!isPasswordValid) {
+                throw new common_1.UnauthorizedException('Credenciales inválidas');
+            }
             const { password: _ } = user, safeUser = __rest(user, ["password"]);
             return safeUser;
         });
@@ -86,5 +88,5 @@ let LoginUserService = class LoginUserService {
 exports.LoginUserService = LoginUserService;
 exports.LoginUserService = LoginUserService = __decorate([
     (0, common_1.Injectable)(),
-    __metadata("design:paramtypes", [prisma_service_1.PrismaService])
+    __metadata("design:paramtypes", [users_repository_1.UserRepository])
 ], LoginUserService);

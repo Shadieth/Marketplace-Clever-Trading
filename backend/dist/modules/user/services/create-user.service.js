@@ -50,10 +50,39 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.CreateUserService = void 0;
+/*Codigo de shadieth
+import { Injectable } from '@nestjs/common';
+import { UserRepository } from '../users.repository'; // Asegúrate de importar el repositorio
+import { User } from '../interfaces/user.interface';
+import * as bcrypt from 'bcrypt';
+
+@Injectable()
+export class CreateUserService {
+  constructor(private readonly userRepository: UserRepository) {}
+
+  async createUser(data: { name: string; email: string; password: string }): Promise<User> {
+    const hashedPassword = await bcrypt.hash(data.password, 10);
+    return this.userRepository.create({
+      ...data,
+      password: hashedPassword,
+    });
+  }
+}*/
 const common_1 = require("@nestjs/common");
-const users_repository_1 = require("../users.repository"); // Asegúrate de importar el repositorio
+const users_repository_1 = require("../users.repository");
 const bcrypt = __importStar(require("bcrypt"));
 let CreateUserService = class CreateUserService {
     constructor(userRepository) {
@@ -61,8 +90,14 @@ let CreateUserService = class CreateUserService {
     }
     createUser(data) {
         return __awaiter(this, void 0, void 0, function* () {
+            const existingUser = yield this.userRepository.findByEmail(data.email);
+            if (existingUser) {
+                throw new common_1.BadRequestException('El email ya está registrado');
+            }
             const hashedPassword = yield bcrypt.hash(data.password, 10);
-            return this.userRepository.create(Object.assign(Object.assign({}, data), { password: hashedPassword }));
+            const newUser = yield this.userRepository.create(Object.assign(Object.assign({}, data), { password: hashedPassword }));
+            const { password } = newUser, userWithoutPassword = __rest(newUser, ["password"]);
+            return userWithoutPassword;
         });
     }
 };

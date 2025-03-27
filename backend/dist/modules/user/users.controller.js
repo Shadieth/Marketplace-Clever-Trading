@@ -48,6 +48,12 @@ let UserController = class UserController {
             return this.getAllUsersService.getAllUsers();
         });
     }
+    //creado por mi
+    register(body) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.createUserService.createUser(body);
+        });
+    }
 };
 exports.UserController = UserController;
 __decorate([
@@ -70,6 +76,13 @@ __decorate([
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], UserController.prototype, "getAllUsers", null);
+__decorate([
+    (0, common_1.Post)(),
+    __param(0, (0, common_1.Body)()),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [Object]),
+    __metadata("design:returntype", Promise)
+], UserController.prototype, "register", null);
 exports.UserController = UserController = __decorate([
     (0, common_1.Controller)('users'),
     __metadata("design:paramtypes", [create_user_service_1.CreateUserService,
