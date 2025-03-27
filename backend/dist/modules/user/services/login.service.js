@@ -50,38 +50,43 @@ var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, ge
         step((generator = generator.apply(thisArg, _arguments || [])).next());
     });
 };
+var __rest = (this && this.__rest) || function (s, e) {
+    var t = {};
+    for (var p in s) if (Object.prototype.hasOwnProperty.call(s, p) && e.indexOf(p) < 0)
+        t[p] = s[p];
+    if (s != null && typeof Object.getOwnPropertySymbols === "function")
+        for (var i = 0, p = Object.getOwnPropertySymbols(s); i < p.length; i++) {
+            if (e.indexOf(p[i]) < 0 && Object.prototype.propertyIsEnumerable.call(s, p[i]))
+                t[p[i]] = s[p[i]];
+        }
+    return t;
+};
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.CreateUserService = void 0;
+exports.LoginService = void 0;
 const common_1 = require("@nestjs/common");
 const users_repository_1 = require("../users.repository");
 const bcrypt = __importStar(require("bcrypt"));
-let CreateUserService = class CreateUserService {
+let LoginService = class LoginService {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
-    createUser(data) {
+    login(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
-            try {
-                const existingUser = yield this.userRepository.findByEmail(data.email);
-                if (existingUser) {
-                    throw new common_1.ConflictException('Email is already in use');
-                }
-                const hashedPassword = yield bcrypt.hash(data.password, 10);
-                const newUser = yield this.userRepository.create(Object.assign(Object.assign({}, data), { password: hashedPassword }));
-                return newUser;
+            const user = yield this.userRepository.findByEmail(email);
+            if (!user) {
+                throw new common_1.UnauthorizedException('Credenciales inválidas');
             }
-            catch (error) {
-                console.error('❌ Error en createUserService:', error);
-                if (error instanceof common_1.ConflictException) {
-                    throw error; // Lanza el error correctamente para que no se transforme en 500
-                }
-                throw new common_1.InternalServerErrorException('Error creating user');
+            const isPasswordValid = yield bcrypt.compare(password, user.password);
+            if (!isPasswordValid) {
+                throw new common_1.UnauthorizedException('Credenciales inválidas');
             }
+            const { password: _ } = user, userWithoutPassword = __rest(user, ["password"]);
+            return userWithoutPassword;
         });
     }
 };
-exports.CreateUserService = CreateUserService;
-exports.CreateUserService = CreateUserService = __decorate([
+exports.LoginService = LoginService;
+exports.LoginService = LoginService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [users_repository_1.UserRepository])
-], CreateUserService);
+], LoginService);

@@ -4,7 +4,7 @@ import { User } from '../interfaces/user.interface';
 import * as bcrypt from 'bcrypt';
 
 @Injectable()
-export class GetByEmailService {
+export class LoginService {
   constructor(private readonly userRepository: UserRepository) {}
 
   async login(email: string, password: string): Promise<Omit<User, 'password'>> {
