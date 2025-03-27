@@ -28,10 +28,11 @@ export class LoginModalComponent {
     this.errorMessage = '';
 
     this.authService.login(this.email, this.password).subscribe({
-      next: (user: any) => {
+      next: (response: any) => {
+        const user = response.user || response; // admite ambos formatos
         this.authService.setSession(user);
-        this.closeModal(); // cierra el modal
-        this.router.navigate(['/home']); // redirige a Home
+        this.closeModal();
+        this.router.navigate(['/']);
       },
       error: (err) => {
         this.errorMessage = 'Credenciales incorrectas. Intenta nuevamente.';

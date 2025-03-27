@@ -72,9 +72,9 @@ export class HeaderComponent implements OnInit {
       this.isDropdownOpen = false; // Cierra el menú cuando se hace clic fuera
     }
     // Ocultar placeholder al enfocar el input
-  hidePlaceholder() {
-    this.isPlaceholderVisible = false;
-  }
+    hidePlaceholder() {
+      this.isPlaceholderVisible = false;
+    }
 
   // Mostrar placeholder si el input está vacío al perder el foco
   showPlaceholder(event: Event) {

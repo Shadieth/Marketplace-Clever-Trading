@@ -34,23 +34,33 @@ export class RegisterComponent {
   onSubmit() {
     this.successMessage = '';
     this.errorMessage = '';
-
+  
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Las contraseñas no coinciden.';
       return;
     }
-
+  
     const payload: RegisterPayload = {
       name: this.name,
       email: this.email,
       password: this.password
     };
-
+  
     this.registerService.registerUser(payload).subscribe({
-      next: (user) => {
-        this.successMessage = 'Registro exitoso.';
-        this.authService.setSession(user); // 👈 Guardar sesión aquí
-        this.router.navigate(['/']);    // 👈 Redirigir después
+      next: () => {
+        this.successMessage = 'Registro exitoso. Iniciando sesión...';
+  
+        // Iniciar sesión después del registro
+        this.authService.login(this.email, this.password).subscribe({
+          next: (user: any) => {
+            this.authService.setSession(user);
+            this.router.navigate(['/']);
+          },
+          error: () => {
+            this.errorMessage = 'El registro fue exitoso, pero no se pudo iniciar sesión automáticamente.';
+          }
+        });
+  
         this.resetForm();
       },
       error: (err) => {
@@ -58,7 +68,7 @@ export class RegisterComponent {
         console.error(err);
       }
     });
-  }
+  }  
 
   resetForm() {
     this.name = '';
