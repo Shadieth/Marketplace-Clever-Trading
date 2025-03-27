@@ -14,7 +14,6 @@ const prisma_service_1 = require("../../prisma/prisma.service");
 const create_user_service_1 = require("./services/create-user.service");
 const get_all_users_services_1 = require("./services/get-all-users.services");
 const prisma_module_1 = require("../../prisma/prisma.module");
-const login_user_service_1 = require("./services/login-user.service");
 let UserModule = class UserModule {
 };
 exports.UserModule = UserModule;
@@ -26,7 +25,6 @@ exports.UserModule = UserModule = __decorate([
             get_all_users_services_1.GetAllUsersService,
             create_user_service_1.CreateUserService,
             users_repository_1.UserRepository,
-            login_user_service_1.LoginUserService,
             prisma_service_1.PrismaService
         ],
     })

@@ -55,14 +55,6 @@ let UserRepository = class UserRepository {
             });
         });
     }
-    // Obtener usuario por email
-    findByEmail(email) {
-        return __awaiter(this, void 0, void 0, function* () {
-            return this.prisma.user.findUnique({
-                where: { email },
-            });
-        });
-    }
 };
 exports.UserRepository = UserRepository;
 exports.UserRepository = UserRepository = __decorate([
