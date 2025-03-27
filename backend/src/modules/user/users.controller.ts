@@ -1,7 +1,7 @@
 import { Controller, Post, Body, Get } from '@nestjs/common';
 import { CreateUserService } from './services/create-user.service';
 import { GetAllUsersService } from './services/get-all-users.services';
-import { GetByEmailService } from './services/get-by-email.service';
+import { LoginService } from './services/login.service';
 import { CreateUserDto } from './dtos/create-user.dto';
 import { LoginDto } from './dtos/login.dto';
 
@@ -10,7 +10,7 @@ export class UserController {
   constructor(
     private readonly createUserService: CreateUserService,
     private readonly getAllUsersService: GetAllUsersService,
-    private readonly getByEmailService: GetByEmailService,
+    private readonly loginService: LoginService,
   ) {}
 
   @Post()
@@ -25,6 +25,6 @@ export class UserController {
 
   @Post('login')
   async login(@Body() loginDto: LoginDto) {
-    return this.getByEmailService.login(loginDto.email, loginDto.password);
+    return this.loginService.login(loginDto.email, loginDto.password);
   }
 }
