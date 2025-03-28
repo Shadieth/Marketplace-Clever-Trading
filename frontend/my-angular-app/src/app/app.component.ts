@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+/*import { Component } from '@angular/core';
 import { Router } from '@angular/router'; // Importa Router
 import { HeaderComponent } from './header/header.component'; // Importar el componente
 import { FooterComponent } from './footer/footer.component';
@@ -9,6 +9,7 @@ import { RecentlyAddedComponent } from './recently-added/recently-added.componen
 import { CommentsComponent } from './comments/comments.component';
 import { LanguagesComponent } from './languages/languages.component';
 import { NewsletterComponent } from './newsletter/newsletter.component';
+
 @Component({
   selector: 'app-root',
   standalone: true, // Indica que este es un componente independiente
@@ -27,5 +28,20 @@ export class AppComponent {
   navigateToShop(): void {
     this.router.navigate(['/shop']);
   }
+}*/
+import { Component } from '@angular/core';
+import { RouterModule } from '@angular/router';
+import { HeaderComponent } from './header/header.component';
+import { FooterComponent } from './footer/footer.component';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css'],
+  imports: [RouterModule, HeaderComponent, FooterComponent] // ← incluye RouterModule
+})
+export class AppComponent {
+  title = 'my-angular-app';
 }
 

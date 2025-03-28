@@ -1,16 +1,43 @@
-import { Component, ElementRef, ViewChild, HostListener} from '@angular/core';
-import { NgFor, NgIf, NgStyle} from '@angular/common'; // ✅ Importar NgFor
+import { Component, ElementRef, ViewChild, HostListener, OnInit} from '@angular/core';
+import { NgFor, NgIf, NgStyle, CommonModule} from '@angular/common'; // ✅ Importar NgFor
+import { RouterModule } from '@angular/router';
+import { LoginModalComponent } from '../login-modal/login-modal.component'; // ✅ IMPORTA TU MODAL
+import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
   standalone: true, // Indicar que este es un componente independiente
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  imports: [NgFor, NgIf, NgStyle] // ✅ Agregar NgFor en imports
+  imports: [NgFor, NgIf, NgStyle, RouterModule, LoginModalComponent] // ✅ Agregar NgFor en imports
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  showLoginModal = false; // ✅ NECESARIO PARA ABRIR/CERRAR EL MODAL
   logoPath: string = 'assets/logoclevertrading-web.png'; // Ruta de Imagen LOGO
+  userName: string | null = null;
 
+  ngOnInit(): void {
+    this.refreshSessionStatus();
+  }
+
+  refreshSessionStatus() {
+    this.isLoggedIn = this.authService.isLoggedIn();
+    this.userName = this.authService.getUserName();
+  }
+
+  logout() {
+    this.authService.clearSession();
+    window.location.reload(); // refresca el header
+  }
+
+  openLoginModal() {
+    this.showLoginModal = true;
+  }
+
+  closeLoginModal() {
+    this.showLoginModal = false;
+    this.refreshSessionStatus(); // al cerrar modal, actualiza sesión
+  }
     // Lista de opciones del desplegable
     categories = [
       { name: 'Productos', value: 'products' },
@@ -45,9 +72,9 @@ export class HeaderComponent {
       this.isDropdownOpen = false; // Cierra el menú cuando se hace clic fuera
     }
     // Ocultar placeholder al enfocar el input
-  hidePlaceholder() {
-    this.isPlaceholderVisible = false;
-  }
+    hidePlaceholder() {
+      this.isPlaceholderVisible = false;
+    }
 
   // Mostrar placeholder si el input está vacío al perder el foco
   showPlaceholder(event: Event) {
@@ -62,7 +89,7 @@ export class HeaderComponent {
   userImage: string = 'assets/default-user.png'; // Imagen por defecto
 
   // Si el usuario está autenticado, cambia la imagen a la del usuario
-  constructor() {
+  constructor(private authService: AuthService) {
     if (this.isLoggedIn) {
       this.userImage = 'assets/user-profile.jpg'; // Imagen del usuario autenticado
     }

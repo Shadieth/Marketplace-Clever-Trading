@@ -28,15 +28,31 @@
           </button>
     </div>
     <div class="user-session">
-        <img [src]="userImage" alt="Foto de usuario" class="user-image">
-        <div class="user-text">
-          <span class="welcome-text">Bienvenido!</span>
-          <div class="session-links">
-            <a href="#" class="login">Iniciar sesión</a> |
-            <a href="#" class="register">crea una cuenta nueva</a>
-          </div>
+      <img [src]="userImage" alt="Foto de usuario" class="user-image" />
+    
+      <div class="user-text">
+        <!-- Mostrar nombre si hay sesión, si no mostrar "Bienvenido!" -->
+        <span class="welcome-text">
+          {{ isLoggedIn ? 'Bienvenido, ' + userName : 'Bienvenido!' }}
+        </span>
+    
+        <div class="session-links">
+          <!-- Enlaces según sesión -->
+          <ng-container *ngIf="!isLoggedIn; else loggedInLinks">
+            <a (click)="showLoginModal = true">Iniciar sesión</a> |
+            <a routerLink="/register" class="register">Crear una cuenta nueva</a>
+          </ng-container>
+    
+          <ng-template #loggedInLinks>
+            <a routerLink="/settings">Ajustes</a> |
+            <a (click)="logout()">Salir de la sesión</a>
+          </ng-template>
         </div>
-    </div>      
+    
+        <!-- Modal de login -->
+        <app-login-modal *ngIf="showLoginModal" (close)="closeLoginModal()"></app-login-modal>
+      </div>
+    </div>         
     </div>
   
     <div class="info-bar">

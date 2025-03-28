@@ -23,6 +23,11 @@ function bootstrap() {
         // Habilitar el cierre limpio de Prisma
         const prismaService = app.get(prisma_service_1.PrismaService);
         yield prismaService.enableShutdownHooks(app);
+        // HABILITAR CORS AQUÍ
+        app.enableCors({
+            origin: 'http://localhost:4200', // O '*' para permitir todos (no recomendado en producción)
+            credentials: true
+        });
         // Habilitar las validaciones globalmente
         app.useGlobalPipes(new common_1.ValidationPipe({
             whitelist: true,
