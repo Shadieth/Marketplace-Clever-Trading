@@ -13,6 +13,12 @@ async function bootstrap() {
   const prismaService = app.get(PrismaService);
   await prismaService.enableShutdownHooks(app);
 
+  // HABILITAR CORS AQUÍ
+  app.enableCors({
+    origin: 'http://localhost:4200', // O '*' para permitir todos (no recomendado en producción)
+    credentials: true
+  });
+
   // Habilitar las validaciones globalmente
   app.useGlobalPipes(new ValidationPipe({
     whitelist: true,
