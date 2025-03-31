@@ -33,6 +33,7 @@ let UserRepository = class UserRepository {
                     name: data.name,
                     email: data.email,
                     password: data.password,
+                    role: data.role,
                 },
             });
         });
