@@ -64,6 +64,16 @@ let ProductRepository = class ProductRepository {
             };
         });
     }
+    // Obtener todos los productos filtrados por categoría
+    getProductsByCategory(category) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.prisma.product.findMany({
+                where: {
+                    category: category, // Filtrar por la categoría
+                },
+            });
+        });
+    }
 };
 exports.ProductRepository = ProductRepository;
 exports.ProductRepository = ProductRepository = __decorate([

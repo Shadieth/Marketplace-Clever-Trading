@@ -46,6 +46,15 @@ export class ProductRepository {
       updatedAt: createdProduct.updatedAt,
     };
   }
+
+  // Obtener todos los productos filtrados por categoría
+  async getProductsByCategory(category: Category): Promise<Product[]> {
+    return this.prisma.product.findMany({
+      where: {
+        category: category, // Filtrar por la categoría
+      },
+    });
+  }
 }
 
 
