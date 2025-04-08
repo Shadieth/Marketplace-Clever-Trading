@@ -1,4 +1,4 @@
-import { Country, ShippingOptions } from '@prisma/client'; // Asegúrate de importar los enums de Prisma
+import { Country, ShippingOptions, Category } from '@prisma/client'; // Asegúrate de importar los enums de Prisma
 import { Decimal } from '@prisma/client/runtime/library';
 
 export interface Product {
@@ -14,6 +14,7 @@ export interface Product {
   shippingCountries: string[]; // Si shippingCountries es un array de strings en Prisma, se puede dejar así
   images: string[];
   sellerId: string;
+  category: Category;
   createdAt?: Date;     // Opcional, generado por la BD
   updatedAt?: Date;     // Opcional, generado por la BD
 }

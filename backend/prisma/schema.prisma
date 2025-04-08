@@ -13,6 +13,8 @@ model User {
   email     String    @unique  
   password  String    
   role      Role      
+  mobile   String?   // Campo para el teléfono móvil
+  country   Country   // Campo para el país, utilizando el enum Country
   products  Product[] // Relación con productos
   createdAt DateTime  @default(now()) 
   updatedAt DateTime  @updatedAt
@@ -32,6 +34,7 @@ model Product {
   images            String[]        
   sellerId          String            @db.Uuid  // Corregido tipo de dato a String (UUID)
   seller            User              @relation(fields: [sellerId], references: [id]) 
+  category          Category
   createdAt         DateTime          @default(now()) 
   updatedAt         DateTime          @updatedAt
 }
@@ -76,4 +79,24 @@ enum Role {
   CLIENT
   SELLER
 }
+
+enum Category {
+  ALIMENTACION               @map("alimentacion")
+  AUTOMOTRIZ                 @map("automitriz")
+  CALZADO                    @map("calzado")
+  CASA_JARDIN_Y_OFICINA      @map("casa, jardin y oficina")
+  CONSTRUCCION_E_INDUSTRIA   @map("construccion e industria")
+  DEPORTE_Y_AFICION          @map("deporte y aficion")
+  ELECTRODOMESTICOS_GRANDES  @map("electrodomesticos grandes")
+  ELECTRODOMESTICOS_PEQUENOS @map("electrodomesticos pequeños")
+  ELECTRONICA                @map("electronica")
+  LIQUIDACION_EMPRESAS       @map("liquidacion de empresas")
+  MUEBLES                    @map("muebes")
+  PARA_NINOS                 @map("para niños")
+  RELOJES_Y_JOYERIA          @map("relojes y joyeria")
+  ROPA                       @map("ropa")
+  SALUD_Y_BELLEZA            @map("salud y belleza")
+  TELEFONOS                  @map("telefonos")
+}
+
 

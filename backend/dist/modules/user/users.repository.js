@@ -34,6 +34,8 @@ let UserRepository = class UserRepository {
                     email: data.email,
                     password: data.password,
                     role: data.role,
+                    country: data.country,
+                    mobile: data.mobile,
                 },
             });
         });

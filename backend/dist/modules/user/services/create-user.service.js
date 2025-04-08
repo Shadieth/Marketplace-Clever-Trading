@@ -75,7 +75,7 @@ let CreateUserService = class CreateUserService {
             catch (error) {
                 console.error('❌ Error en createUserService:', error);
                 if (error instanceof common_1.ConflictException) {
-                    throw error; // Lanza el error correctamente para que no se transforme en 500
+                    throw error;
                 }
                 throw new common_1.InternalServerErrorException('Error creating user');
             }
