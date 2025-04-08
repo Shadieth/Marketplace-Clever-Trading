@@ -26,7 +26,7 @@ const common_1 = require("@nestjs/common");
 const create_product_service_1 = require("./services/create-product.service");
 const create_product_dto_1 = require("./dto/create-product.dto");
 const client_1 = require("@prisma/client");
-const get_all_by_category_service_1 = require("./services/get-all-by-category.service");
+const get_all_products_by_category_service_1 = require("./services/get-all-products-by-category.service");
 let ProductsController = class ProductsController {
     constructor(createProductService, getAllByCategoryService) {
         this.createProductService = createProductService;
@@ -66,5 +66,5 @@ __decorate([
 exports.ProductsController = ProductsController = __decorate([
     (0, common_1.Controller)('products'),
     __metadata("design:paramtypes", [create_product_service_1.CreateProductService,
-        get_all_by_category_service_1.GetAllByCategoryService])
+        get_all_products_by_category_service_1.GetAllByCategoryService])
 ], ProductsController);

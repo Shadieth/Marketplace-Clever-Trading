@@ -2,7 +2,7 @@ import { Controller, Post, Body, Get, Query } from '@nestjs/common';
 import { CreateProductService } from './services/create-product.service';
 import { CreateProductDto } from './dto/create-product.dto';
 import { Category } from '@prisma/client';
-import { GetAllByCategoryService } from './services/get-all-by-category.service';
+import { GetAllByCategoryService } from './services/get-all-products-by-category.service';
 
 @Controller('products')
 export class ProductsController {

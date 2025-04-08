@@ -3,7 +3,7 @@ import { PrismaService } from '../../prisma/prisma.service'; // Asegúrate de qu
 import { CreateProductService } from './services/create-product.service'; // Asegúrate de que CreateProductService esté en la carpeta correcta
 import { ProductRepository } from './products.repository'; // Asegúrate de importar el repositorio
 import { ProductsController } from './products.controller'; // Asegúrate de que ProductsController esté en la carpeta correcta
-import { GetAllByCategoryService } from './services/get-all-by-category.service';
+import { GetAllByCategoryService } from './services/get-all-products-by-category.service';
 
 @Module({
   imports: [],
