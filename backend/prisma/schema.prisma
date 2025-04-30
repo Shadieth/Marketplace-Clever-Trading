@@ -33,7 +33,7 @@ model Product {
   shippingCountries Country[]      
   images            String[]        
   sellerId          String            @db.Uuid  // Corregido tipo de dato a String (UUID)
-  seller            User              @relation(fields: [sellerId], references: [id]) 
+  seller            User              @relation(fields: [sellerId], references: [id], onDelete: Cascade) 
   category          Category
   createdAt         DateTime          @default(now()) 
   updatedAt         DateTime          @updatedAt
@@ -76,8 +76,8 @@ enum Country {
 }
 
 enum Role {
-  CLIENT
   SELLER
+  ADMIN
 }
 
 enum Category {

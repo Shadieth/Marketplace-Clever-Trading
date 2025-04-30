@@ -63,9 +63,11 @@ var __rest = (this && this.__rest) || function (s, e) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.LoginService = void 0;
+exports.getLoggedUser = getLoggedUser;
 const common_1 = require("@nestjs/common");
 const users_repository_1 = require("../users.repository");
 const bcrypt = __importStar(require("bcrypt"));
+let currentUser = null;
 let LoginService = class LoginService {
     constructor(userRepository) {
         this.userRepository = userRepository;
@@ -73,13 +75,12 @@ let LoginService = class LoginService {
     login(email, password) {
         return __awaiter(this, void 0, void 0, function* () {
             const user = yield this.userRepository.findByEmail(email);
-            if (!user) {
+            if (!user)
                 throw new common_1.UnauthorizedException('Credenciales inválidas');
-            }
             const isPasswordValid = yield bcrypt.compare(password, user.password);
-            if (!isPasswordValid) {
+            if (!isPasswordValid)
                 throw new common_1.UnauthorizedException('Credenciales inválidas');
-            }
+            currentUser = user; // ✅ Guardamos al usuario "logueado"
             const { password: _ } = user, userWithoutPassword = __rest(user, ["password"]);
             return userWithoutPassword;
         });
@@ -90,3 +91,7 @@ exports.LoginService = LoginService = __decorate([
     (0, common_1.Injectable)(),
     __metadata("design:paramtypes", [users_repository_1.UserRepository])
 ], LoginService);
+// Función auxiliar para recuperar el usuario actual desde fuera
+function getLoggedUser() {
+    return currentUser;
+}
