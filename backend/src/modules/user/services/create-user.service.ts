@@ -2,12 +2,20 @@ import { Injectable, ConflictException, InternalServerErrorException } from '@ne
 import { UserRepository } from '../users.repository'; 
 import { User } from '../interfaces/user.interface';
 import * as bcrypt from 'bcrypt';
+import { Role, Country } from '@prisma/client';
 
 @Injectable()
 export class CreateUserService {
   constructor(private readonly userRepository: UserRepository) {}
 
-  async createUser(data: { name: string; email: string; password: string }): Promise<User> {
+  async createUser(data: { 
+    name: string; 
+    email: string; 
+    password: string; 
+    role: Role;
+    country: Country;
+    mobile?: string;
+  }): Promise<User> {
     try {
       const existingUser = await this.userRepository.findByEmail(data.email);
       
@@ -20,14 +28,15 @@ export class CreateUserService {
       const newUser = await this.userRepository.create({
         ...data,
         password: hashedPassword,
+        role: data.role ?? Role.SELLER,
       });
-
+      
       return newUser;
     } catch (error) {
       console.error('❌ Error en createUserService:', error);
       
       if (error instanceof ConflictException) {
-        throw error; // Lanza el error correctamente para que no se transforme en 500
+        throw error;
       }
 
       throw new InternalServerErrorException('Error creating user');

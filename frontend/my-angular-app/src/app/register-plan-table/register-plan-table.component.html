@@ -1,0 +1,166 @@
+<div class="plan-table">
+    <table>
+      <thead>
+        <tr>
+          <th></th>
+          <th 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">PLAN ESTÁNDAR</th>
+          <th 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">PLAN PREMIUM</th>
+        </tr>
+      </thead>
+  
+      <tbody>
+        <tr>
+          <td>Periodo de acceso a CleverTrading</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">12 meses</td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">12 meses</td>
+        </tr>
+  
+        <tr class="section-title">
+          <td colspan="3">COMPRA INTERNACIONAL</td>
+        </tr>
+  
+        <tr>
+          <td>Contactos sin límite con mayoristas</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Acceso a datos de contacto de mayoristas</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Boletín diario de ofertas</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Ofertas internacionales con descuentos</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+        </tr>
+  
+        <tr class="section-title">
+          <td colspan="3">MAYOR SEGURIDAD</td>
+        </tr>
+        <tr>
+          <td>Acceso a opiniones sobre proveedores</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">
+            <span class="material-icons-outlined error">cancel</span>
+          </td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+        </tr>
+        <tr>
+          <td>Lista negra de mayoristas</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">
+            <span class="material-icons-outlined error">cancel</span>
+          </td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+        </tr>
+  
+        <tr class="section-title">
+          <td colspan="3">VENTAS INTERNACIONALES</td>
+        </tr>
+        <tr>
+          <td>Promoción de tus ofertas</td>
+          <td 
+          (click)="selectPlan('standard')" 
+          [class.active]="selectedPlan === 'standard'" 
+          [class.inactive]="selectedPlan === 'premium'">
+          <span class="material-icons-outlined error">cancel</span>
+        </td>
+        <td 
+          (click)="selectPlan('premium')" 
+          [class.active]="selectedPlan === 'premium'" 
+          [class.inactive]="selectedPlan === 'standard'">
+          <span class="material-icons-outlined success">check_circle</span>
+        </td>
+        </tr>
+        <tr>
+          <td>Acceso a estadísticas de visitas</td>
+          <td 
+            (click)="selectPlan('standard')" 
+            [class.active]="selectedPlan === 'standard'" 
+            [class.inactive]="selectedPlan === 'premium'">
+            <span class="material-icons-outlined error">cancel</span>
+          </td>
+          <td 
+            (click)="selectPlan('premium')" 
+            [class.active]="selectedPlan === 'premium'" 
+            [class.inactive]="selectedPlan === 'standard'">
+            <span class="material-icons-outlined success">check_circle</span>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    
+  </div>
+  

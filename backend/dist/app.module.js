@@ -10,6 +10,8 @@ exports.AppModule = void 0;
 const common_1 = require("@nestjs/common");
 const prisma_module_1 = require("./prisma/prisma.module");
 const users_module_1 = require("./modules/user/users.module");
+const products_module_1 = require("./modules/products/products.module");
+const admin_module_1 = require("./modules/admin/admin.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -17,7 +19,9 @@ exports.AppModule = AppModule = __decorate([
     (0, common_1.Module)({
         imports: [
             prisma_module_1.PrismaModule,
-            users_module_1.UserModule
+            users_module_1.UserModule,
+            products_module_1.ProductsModule,
+            admin_module_1.AdminModule
         ],
     })
 ], AppModule);

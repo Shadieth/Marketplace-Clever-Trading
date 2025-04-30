@@ -55,25 +55,27 @@ exports.CreateUserService = void 0;
 const common_1 = require("@nestjs/common");
 const users_repository_1 = require("../users.repository");
 const bcrypt = __importStar(require("bcrypt"));
+const client_1 = require("@prisma/client");
 let CreateUserService = class CreateUserService {
     constructor(userRepository) {
         this.userRepository = userRepository;
     }
     createUser(data) {
         return __awaiter(this, void 0, void 0, function* () {
+            var _a;
             try {
                 const existingUser = yield this.userRepository.findByEmail(data.email);
                 if (existingUser) {
                     throw new common_1.ConflictException('Email is already in use');
                 }
                 const hashedPassword = yield bcrypt.hash(data.password, 10);
-                const newUser = yield this.userRepository.create(Object.assign(Object.assign({}, data), { password: hashedPassword }));
+                const newUser = yield this.userRepository.create(Object.assign(Object.assign({}, data), { password: hashedPassword, role: (_a = data.role) !== null && _a !== void 0 ? _a : client_1.Role.SELLER }));
                 return newUser;
             }
             catch (error) {
                 console.error('❌ Error en createUserService:', error);
                 if (error instanceof common_1.ConflictException) {
-                    throw error; // Lanza el error correctamente para que no se transforme en 500
+                    throw error;
                 }
                 throw new common_1.InternalServerErrorException('Error creating user');
             }
