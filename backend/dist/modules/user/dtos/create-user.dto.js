@@ -33,3 +33,12 @@ __decorate([
     ,
     __metadata("design:type", String)
 ], CreateUserDto.prototype, "role", void 0);
+__decorate([
+    (0, class_validator_1.IsEnum)(client_1.Country),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "country", void 0);
+__decorate([
+    (0, class_validator_1.IsString)(),
+    (0, class_validator_1.IsOptional)(),
+    __metadata("design:type", String)
+], CreateUserDto.prototype, "mobile", void 0);

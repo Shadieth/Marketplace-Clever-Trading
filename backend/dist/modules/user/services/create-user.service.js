@@ -69,13 +69,13 @@ let CreateUserService = class CreateUserService {
                     throw new common_1.ConflictException('Email is already in use');
                 }
                 const hashedPassword = yield bcrypt.hash(data.password, 10);
-                const newUser = yield this.userRepository.create(Object.assign(Object.assign({}, data), { password: hashedPassword, role: (_a = data.role) !== null && _a !== void 0 ? _a : client_1.Role.CLIENT }));
+                const newUser = yield this.userRepository.create(Object.assign(Object.assign({}, data), { password: hashedPassword, role: (_a = data.role) !== null && _a !== void 0 ? _a : client_1.Role.SELLER }));
                 return newUser;
             }
             catch (error) {
                 console.error('❌ Error en createUserService:', error);
                 if (error instanceof common_1.ConflictException) {
-                    throw error; // Lanza el error correctamente para que no se transforme en 500
+                    throw error;
                 }
                 throw new common_1.InternalServerErrorException('Error creating user');
             }

@@ -7,6 +7,9 @@ CREATE TYPE "Country" AS ENUM ('AUSTRIA', 'BELGIUM', 'BULGARIA', 'CROATIA', 'CYP
 -- CreateEnum
 CREATE TYPE "Role" AS ENUM ('CLIENT', 'SELLER');
 
+-- CreateEnum
+CREATE TYPE "Category" AS ENUM ('alimentacion', 'automitriz', 'calzado', 'casa, jardin y oficina', 'construccion e industria', 'deporte y aficion', 'electrodomesticos grandes', 'electrodomesticos pequeños', 'electronica', 'liquidacion de empresas', 'muebes', 'para niños', 'relojes y joyeria', 'ropa', 'salud y belleza', 'telefonos');
+
 -- CreateTable
 CREATE TABLE "User" (
     "id" UUID NOT NULL,
@@ -14,6 +17,8 @@ CREATE TABLE "User" (
     "email" TEXT NOT NULL,
     "password" TEXT NOT NULL,
     "role" "Role" NOT NULL,
+    "mobile" TEXT,
+    "country" "Country" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -34,6 +39,7 @@ CREATE TABLE "Product" (
     "shippingCountries" "Country"[],
     "images" TEXT[],
     "sellerId" UUID NOT NULL,
+    "category" "Category" NOT NULL,
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 

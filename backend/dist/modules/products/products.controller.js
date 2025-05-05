@@ -25,13 +25,26 @@ exports.ProductsController = void 0;
 const common_1 = require("@nestjs/common"); //Get implementado por Yoel
 const create_product_service_1 = require("./services/create-product.service");
 const create_product_dto_1 = require("./dto/create-product.dto");
+const client_1 = require("@prisma/client");
+const get_all_products_by_category_service_1 = require("./services/get-all-products-by-category.service");
 let ProductsController = class ProductsController {
-    constructor(createProductService) {
+    constructor(createProductService, getAllByCategoryService) {
         this.createProductService = createProductService;
+        this.getAllByCategoryService = getAllByCategoryService;
     }
     create(createProductDto) {
         return __awaiter(this, void 0, void 0, function* () {
             return this.createProductService.create(createProductDto);
+        });
+    }
+    // Endpoint GET para obtener productos filtrados por categoría
+    getProducts(category) {
+        return __awaiter(this, void 0, void 0, function* () {
+            // Validar que se haya pasado una categoría válida
+            if (!category) {
+                throw new Error('Category is required');
+            }
+            return this.getAllByCategoryService.getProductsByCategory(category);
         });
     }
     // Método creado por YOEL
@@ -52,11 +65,19 @@ __decorate([
 ], ProductsController.prototype, "create", null);
 __decorate([
     (0, common_1.Get)(),
+    __param(0, (0, common_1.Query)('category')),
+    __metadata("design:type", Function),
+    __metadata("design:paramtypes", [String]),
+    __metadata("design:returntype", Promise)
+], ProductsController.prototype, "getProducts", null);
+__decorate([
+    (0, common_1.Get)(),
     __metadata("design:type", Function),
     __metadata("design:paramtypes", []),
     __metadata("design:returntype", Promise)
 ], ProductsController.prototype, "findAll", null);
 exports.ProductsController = ProductsController = __decorate([
     (0, common_1.Controller)('products'),
-    __metadata("design:paramtypes", [create_product_service_1.CreateProductService])
+    __metadata("design:paramtypes", [create_product_service_1.CreateProductService,
+        get_all_products_by_category_service_1.GetAllByCategoryService])
 ], ProductsController);

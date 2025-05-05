@@ -16,7 +16,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"name\": \"Usuario Ejemplo\",\n    \"email\": \"usuario@ejemplo.com\",\n    \"password\": \"contraseña123\"\n}",
+							"raw": "{\n  \"name\": \"Juan Pérez\",\n  \"email\": \"juan.perez@example.com\",\n  \"password\": \"password123\",  // Asegúrate de que la contraseña esté cifrada si es necesario\n  \"role\": \"SELLER\",  // Enum Role (ajusta según los valores de tu enum)\n  \"mobile\": \"+34600123456\",  // Teléfono móvil (opcional)\n  \"country\": \"SPAIN\"  // Enum Country (ajusta según el valor en tu base de datos)\n}\n\n",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -63,7 +63,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"usuario@ejemplo.com\",\n    \"password\": \"contraseña123\"\n}",
+							"raw": "{\n    \"email\": \"juan.perez@example.com\",\n    \"password\": \"password123\"\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -80,6 +80,64 @@
 							"path": [
 								"users",
 								"login"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "products",
+			"item": [
+				{
+					"name": "product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"title\": \"Zapatos deportivos\",\n  \"description\": \"Zapatos deportivos de alta calidad para todo tipo de actividades deportivas.\",\n  \"price\": 50.99,\n  \"minOrder\": 1,\n  \"stock\": 100,\n  \"country\": \"SPAIN\",  // Asegúrate de que el valor corresponda a un valor del enum Country\n  \"brand\": \"Nike\",  // Opcional, si tienes una marca\n  \"shippingOptions\": [\"NATIONAL\", \"INTERNATIONAL\"],  // Opcional, opciones de envío\n  \"shippingCountries\": [\"SPAIN\", \"PORTUGAL\"],  // Opcional, países donde se enviará\n  \"images\": [\"https://link-a-la-imagen1.com\", \"https://link-a-la-imagen2.com\"],  // Enlaces a imágenes del producto\n  \"sellerId\": \"a18d3bf6-0a5e-4924-9878-1e631fed0d5f\",  // UUID del vendedor (Juan Pérez), debe ser el ID de Juan en la base de datos\n  \"category\": \"CALZADO\"  // Categoría del producto, en este caso, \"CALZADO\"\n}\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3001/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "by category",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3001/products?category=CALZADO",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3001",
+							"path": [
+								"products"
+							],
+							"query": [
+								{
+									"key": "category",
+									"value": "CALZADO"
+								}
 							]
 						}
 					},

@@ -45,23 +45,29 @@ __decorate([
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "brand", void 0);
 __decorate([
-    (0, class_validator_1.IsArray)() // Cambiado a array
-    ,
-    (0, class_validator_1.IsEnum)(client_1.ShippingOptions, { each: true }) // Ahora es un array de ShippingOptions
+    (0, class_validator_1.IsArray)(),
+    (0, class_validator_1.IsEnum)(client_1.ShippingOptions, { each: true }) // Array de ShippingOptions (enum)
     ,
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "shippingOptions", void 0);
 __decorate([
     (0, class_validator_1.IsArray)(),
-    (0, class_validator_1.IsEnum)(client_1.Country, { each: true }),
+    (0, class_validator_1.IsEnum)(client_1.Country, { each: true }) // Array de Country (enum) para países de envío
+    ,
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "shippingCountries", void 0);
 __decorate([
     (0, class_validator_1.IsArray)(),
-    (0, class_validator_1.IsString)({ each: true }),
+    (0, class_validator_1.IsString)({ each: true }) // Array de cadenas de texto (URLs de imágenes)
+    ,
     __metadata("design:type", Array)
 ], CreateProductDto.prototype, "images", void 0);
 __decorate([
     (0, class_validator_1.IsUUID)(),
     __metadata("design:type", String)
 ], CreateProductDto.prototype, "sellerId", void 0);
+__decorate([
+    (0, class_validator_1.IsEnum)(client_1.Category) // Asegúrate de que el campo `category` sea un enum de `Category`
+    ,
+    __metadata("design:type", String)
+], CreateProductDto.prototype, "category", void 0);

@@ -35,12 +35,13 @@ let ProductRepository = class ProductRepository {
                     price: createProductDto.price,
                     minOrder: createProductDto.minOrder,
                     stock: createProductDto.stock,
-                    country: createProductDto.country,
+                    country: createProductDto.country, // El campo `country` debe ser del tipo `Country` (enum)
                     brand: createProductDto.brand,
-                    shippingOptions: createProductDto.shippingOptions,
-                    shippingCountries: createProductDto.shippingCountries,
+                    shippingOptions: createProductDto.shippingOptions, // Asegúrate de que shippingOptions sea un array de `ShippingOptions`
+                    shippingCountries: createProductDto.shippingCountries, // Asegúrate de que shippingCountries sea un array de `Country`
                     images: createProductDto.images,
                     sellerId: createProductDto.sellerId,
+                    category: createProductDto.category, // El campo `category` debe ser del tipo `Category` (enum)
                 },
             });
             // Devuelve el producto con la interfaz Product, puedes mapear los campos si es necesario
@@ -48,7 +49,7 @@ let ProductRepository = class ProductRepository {
                 id: createdProduct.id,
                 title: createdProduct.title,
                 description: createdProduct.description,
-                price: createdProduct.price, // Prisma usa Decimal, por lo que debes asegurarte de convertirlo si es necesario
+                price: createdProduct.price, // Prisma usa Decimal, lo convertimos a string
                 minOrder: createdProduct.minOrder,
                 stock: createdProduct.stock,
                 country: createdProduct.country,
@@ -57,9 +58,20 @@ let ProductRepository = class ProductRepository {
                 shippingCountries: createdProduct.shippingCountries,
                 images: createdProduct.images,
                 sellerId: createdProduct.sellerId,
+                category: createdProduct.category, // Mapeamos también la categoría
                 createdAt: createdProduct.createdAt,
                 updatedAt: createdProduct.updatedAt,
             };
+        });
+    }
+    // Obtener todos los productos filtrados por categoría
+    getProductsByCategory(category) {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.prisma.product.findMany({
+                where: {
+                    category: category, // Filtrar por la categoría
+                },
+            });
         });
     }
     // Método creado por YOEL

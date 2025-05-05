@@ -12,6 +12,7 @@ const prisma_service_1 = require("../../prisma/prisma.service"); // Asegúrate d
 const create_product_service_1 = require("./services/create-product.service"); // Asegúrate de que CreateProductService esté en la carpeta correcta
 const products_repository_1 = require("./products.repository"); // Asegúrate de importar el repositorio
 const products_controller_1 = require("./products.controller"); // Asegúrate de que ProductsController esté en la carpeta correcta
+const get_all_products_by_category_service_1 = require("./services/get-all-products-by-category.service");
 let ProductsModule = class ProductsModule {
 };
 exports.ProductsModule = ProductsModule;
@@ -22,6 +23,7 @@ exports.ProductsModule = ProductsModule = __decorate([
             prisma_service_1.PrismaService, // PrismaService para acceso a base de datos
             products_repository_1.ProductRepository, // ProductRepository para manejar las operaciones de productos
             create_product_service_1.CreateProductService, // Servicio que gestiona la lógica de negocio
+            get_all_products_by_category_service_1.GetAllByCategoryService, // Servicio para obtener productos por categoría
         ],
         controllers: [products_controller_1.ProductsController], // Controlador para gestionar las rutas
     })

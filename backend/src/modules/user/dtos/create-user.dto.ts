@@ -1,5 +1,5 @@
-import { IsString, IsEmail, MinLength, IsEnum } from 'class-validator';  
-import { Role } from '@prisma/client';
+import { IsString, IsEmail, MinLength, IsEnum, IsOptional } from 'class-validator';  
+import { Role, Country } from '@prisma/client';
 
 export class CreateUserDto {
 
@@ -15,5 +15,12 @@ export class CreateUserDto {
 
   @IsEnum(Role)  // Valida que el rol sea CLIENT o SELLER
   role: Role;
+
+  @IsEnum(Country)
+  country: Country;
+
+  @IsString()
+  @IsOptional()
+  mobile?: string;
 }
 

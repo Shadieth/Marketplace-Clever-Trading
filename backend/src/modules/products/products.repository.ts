@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { PrismaService } from '../../prisma/prisma.service'; // Asegúrate de que PrismaService esté correctamente configurado
 import { CreateProductDto } from './dto/create-product.dto';
 import { Product } from './interface/product.interface'; // Importa la interfaz del producto
+import { Category, Country, ShippingOptions } from '@prisma/client'; // Importa los enums desde Prisma
 
 @Injectable()
 export class ProductRepository {
@@ -16,12 +17,13 @@ export class ProductRepository {
         price: createProductDto.price,
         minOrder: createProductDto.minOrder,
         stock: createProductDto.stock,
-        country: createProductDto.country,
+        country: createProductDto.country, // El campo `country` debe ser del tipo `Country` (enum)
         brand: createProductDto.brand,
-        shippingOptions: createProductDto.shippingOptions,
-        shippingCountries: createProductDto.shippingCountries,
+        shippingOptions: createProductDto.shippingOptions as ShippingOptions[], // Asegúrate de que shippingOptions sea un array de `ShippingOptions`
+        shippingCountries: createProductDto.shippingCountries as Country[], // Asegúrate de que shippingCountries sea un array de `Country`
         images: createProductDto.images,
         sellerId: createProductDto.sellerId,
+        category: createProductDto.category as Category, // El campo `category` debe ser del tipo `Category` (enum)
       },
     });
 
@@ -30,7 +32,7 @@ export class ProductRepository {
       id: createdProduct.id,
       title: createdProduct.title,
       description: createdProduct.description,
-      price: createdProduct.price, // Prisma usa Decimal, por lo que debes asegurarte de convertirlo si es necesario
+      price: createdProduct.price, // Prisma usa Decimal, lo convertimos a string
       minOrder: createdProduct.minOrder,
       stock: createdProduct.stock,
       country: createdProduct.country,
@@ -39,33 +41,22 @@ export class ProductRepository {
       shippingCountries: createdProduct.shippingCountries,
       images: createdProduct.images,
       sellerId: createdProduct.sellerId,
+      category: createdProduct.category, // Mapeamos también la categoría
       createdAt: createdProduct.createdAt,
       updatedAt: createdProduct.updatedAt,
     };
   }
-  // Método creado por YOEL
-  // Agrega el método findAll() para obtener todos los productos
-  async findAll(): Promise<Product[]> {
-    const products = await this.prisma.product.findMany();
-    // Mapea cada producto para ajustarlo a la interfaz Product
-    return products.map((createdProduct) => ({
-      id: createdProduct.id,
-      title: createdProduct.title,
-      description: createdProduct.description,
-      price: createdProduct.price,
-      minOrder: createdProduct.minOrder,
-      stock: createdProduct.stock,
-      country: createdProduct.country,
-      brand: createdProduct.brand,
-      shippingOptions: createdProduct.shippingOptions,
-      shippingCountries: createdProduct.shippingCountries,
-      images: createdProduct.images,
-      sellerId: createdProduct.sellerId,
-      createdAt: createdProduct.createdAt,
-      updatedAt: createdProduct.updatedAt,
-    }));
+
+  // Obtener todos los productos filtrados por categoría
+  async getProductsByCategory(category: Category): Promise<Product[]> {
+    return this.prisma.product.findMany({
+      where: {
+        category: category, // Filtrar por la categoría
+      },
+    });
   }
 }
+
 
 
 
