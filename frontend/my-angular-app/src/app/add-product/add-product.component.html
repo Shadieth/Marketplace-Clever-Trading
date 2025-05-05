@@ -1,0 +1,109 @@
+<!-- add-product.component.html -->
+<div class="add-product-container">
+    <h1>Añadir producto</h1>
+    <form class="product-form" (ngSubmit)="onSubmit()">
+
+        <!-- Columna izquierda -->
+        <div class="left-column">
+            <!-- Nombre del producto -->
+            <label for="name">Nombre de producto:</label>
+            <textarea id="name" [(ngModel)]="product.name" name="name"></textarea>
+
+            <!-- Descripcion -->
+            <label for="description">Descripción:</label>
+            <textarea id="description" [(ngModel)]="product.description" name="description"></textarea>
+
+            <!-- Imagenes -->
+            <label>Imágenes</label>
+            <div class="image-upload">
+                <div *ngFor="let img of product.images; let i = index" class="image-slot">
+                    <input type="file" (change)="onFileChange($event, i)" />
+                    <img *ngIf="img" [src]="img" class="image-preview" />
+                    <span *ngIf="!img" class="add-icon">+</span>
+                    <span class="delete-icon" *ngIf="img" (click)="removeImage(i)">&#128465;</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Columna derecha -->
+        <div class="right-column">
+            <!-- Precio -->
+            <label>Precio:</label>
+            <div class="inline-group">
+                <input type="number" [(ngModel)]="product.price" name="price" />
+                <select [(ngModel)]="product.currency" name="currency">
+                    <option value="€">€</option>
+                    <option value="$">$</option>
+                </select>
+                <select [(ngModel)]="product.saleType" name="saleType">
+                    <option value="unidad">Unidad</option>
+                    <option value="lote">Lote</option>
+                    <option value="completo">Completo</option>
+                </select>
+            </div>
+
+            <!-- Precio por cantidad -->
+            <label>Precio por cantidad:</label>
+            <div class="inline-group">
+                <select [(ngModel)]="product.quantityRange" name="quantityRange">
+                    <option value="0-50">0-50</option>
+                    <option value="50-100">50-100</option>
+                    <option value="100-200">100-200</option>
+                </select>
+                <input type="number" [(ngModel)]="product.bulkPrice" name="bulkPrice" />
+            </div>
+
+            <!-- Impuestos -->
+            <label>Impuestos:</label>
+            <div class="inline-group">
+                <label><input type="radio" name="tax" value="yes" [(ngModel)]="product.tax" /> SÍ</label>
+                <label><input type="radio" name="tax" value="no" [(ngModel)]="product.tax" /> NO</label>
+            </div>
+
+            <!-- Pedido mínimo -->
+            <label for="minOrder">Pedido mínimo:</label>
+            <input type="number" id="minOrder" [(ngModel)]="product.minOrder" name="minOrder" />
+
+            <!-- Cantidad -->
+            <label>Cantidad:</label>
+            <div class="inline-group">
+                <input type="number" [(ngModel)]="product.quantity" name="quantity" [disabled]="product.unlimited" />
+                <label><input type="checkbox" [(ngModel)]="product.unlimited" name="unlimited" /> Ilimitado</label>
+            </div>
+
+            <!-- Grupo de mercancía -->
+            <label for="group">Grupo de mercancía:</label>
+            <select id="group" [(ngModel)]="product.group" name="group">
+                <option value="nuevo">Nuevo</option>
+                <option value="segunda mano">Segunda mano</option>
+                <option value="devoluciones">Devoluciones</option>
+            </select>
+
+            <!-- Marcas -->
+            <label for="brand">Marcas:</label>
+            <input id="brand" [(ngModel)]="product.brand" name="brand" />
+
+            <!-- Métodos de pago -->
+            <label>Métodos de pago:</label>
+            <div class="checkbox-group">
+                <label><input type="checkbox" [(ngModel)]="product.payMethods.bank" name="bank" /> Transferencia bancaria</label>
+                <label><input type="checkbox" [(ngModel)]="product.payMethods.cash" name="cash" /> Pago en efectivo</label>
+                <label><input type="checkbox" [(ngModel)]="product.payMethods.online" name="online" /> Pago en línea</label>
+                <label><input type="checkbox" [(ngModel)]="product.payMethods.paypal" name="paypal" /> Paypal</label>
+                <label><input type="checkbox" [(ngModel)]="product.payMethods.none" name="none" (change)="disableOthers()" /> No declarar</label>
+            </div>
+
+            <!-- Envío a países -->
+            <label>Envío a países:</label>
+            <div class="country-checkboxes">
+                <label *ngFor="let country of countries">
+                    <input type="checkbox" [(ngModel)]="product.shippingCountries[country]" [name]="country" />
+                    <span class="flag-icon">{{ country }}</span>
+                </label>
+            </div>
+
+            <!-- Botón final -->
+            <button type="submit" class="add-product-btn">+ Añadir el producto a la web</button>
+        </div>
+    </form>
+</div>

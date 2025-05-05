@@ -13,6 +13,6 @@
       "@prisma/client": ["./node_modules/@prisma/client"] // Resuelve las rutas de Prisma correctamente
     }
   },
-  "include": ["src/**/*.ts"],                    // Archivos fuente de TypeScript (en la carpeta src)
+  "include": ["my-angular-app/src/**/*.ts"],                    // Archivos fuente de TypeScript (en la carpeta src)
   "exclude": ["node_modules", "dist"]            // Archivos y carpetas a excluir del compilado
 }

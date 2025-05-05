@@ -10,5 +10,10 @@ export class CreateProductService {
   async create(createProductDto: CreateProductDto): Promise<Product> {
     return this.productRepository.createProduct(createProductDto);
   }
+  // Método creado por YOEL
+  // Método agregado para obtener todos los productos
+  async findAll(): Promise<Product[]> {
+    return this.productRepository.findAll();
+  }
 }
 

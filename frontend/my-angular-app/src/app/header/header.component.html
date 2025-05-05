@@ -3,7 +3,8 @@
     <div class="top-bar">
         
       <div class="logo">
-        <img [src]="logoPath" alt="Logo de la empresa" class="logo-img">
+        <a routerLink="/">
+        <img [src]="logoPath" alt="Logo de la empresa" class="logo-img"></a>
       </div>
 
       <!-- Barra de búsqueda -->
@@ -108,8 +109,7 @@
       <li><a href="#">Mayoristas</a></li>
       <li><a href="#">Top ofertas</a></li>
     </ul>
-  
-    <button class="offer-button">Añadir una oferta +</button>
+    <a *ngIf="isLoggedIn" routerLink="/add-product" class="offer-button">Añadir una oferta +</a>
   </nav>
   
   <!-- Submenú de Categorías -->

@@ -30,6 +30,13 @@ let CreateProductService = class CreateProductService {
             return this.productRepository.createProduct(createProductDto);
         });
     }
+    // Método creado por YOEL
+    // Método agregado para obtener todos los productos
+    findAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            return this.productRepository.findAll();
+        });
+    }
 };
 exports.CreateProductService = CreateProductService;
 exports.CreateProductService = CreateProductService = __decorate([

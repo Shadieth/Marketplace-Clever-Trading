@@ -80,5 +80,9 @@ export class AuthService {
   login(email: string, password: string) {
     return this.http.post('http://localhost:3001/users/login', { email, password });
   }
+  
+  getUserId(): string | null {
+    return this.getSession()?.id ?? null;
+  }
 }
 

@@ -62,6 +62,30 @@ let ProductRepository = class ProductRepository {
             };
         });
     }
+    // Método creado por YOEL
+    // Agrega el método findAll() para obtener todos los productos
+    findAll() {
+        return __awaiter(this, void 0, void 0, function* () {
+            const products = yield this.prisma.product.findMany();
+            // Mapea cada producto para ajustarlo a la interfaz Product
+            return products.map((createdProduct) => ({
+                id: createdProduct.id,
+                title: createdProduct.title,
+                description: createdProduct.description,
+                price: createdProduct.price,
+                minOrder: createdProduct.minOrder,
+                stock: createdProduct.stock,
+                country: createdProduct.country,
+                brand: createdProduct.brand,
+                shippingOptions: createdProduct.shippingOptions,
+                shippingCountries: createdProduct.shippingCountries,
+                images: createdProduct.images,
+                sellerId: createdProduct.sellerId,
+                createdAt: createdProduct.createdAt,
+                updatedAt: createdProduct.updatedAt,
+            }));
+        });
+    }
 };
 exports.ProductRepository = ProductRepository;
 exports.ProductRepository = ProductRepository = __decorate([

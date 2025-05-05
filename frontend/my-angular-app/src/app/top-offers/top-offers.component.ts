@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
+import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-top-offers',
@@ -8,52 +9,54 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrls: ['./top-offers.component.css'],
   imports: [NgFor, NgIf]
 })
-export class TopOffersComponent {
-  offers = [
+export class TopOffersComponent implements OnInit {
+
+  // Array que antes era estático
+  topOffers = [
+    // Aquí puedes dejar un ejemplo vacío o con un par de objetos falsos si quieres
+    // pero se sobrescribirá al cargar los datos del backend
     {
-      image: 'https://outletreforged.com/cdn/shop/files/palet-electronica2.png',
-      price: '5,00 €',
-      unit: '/unidad',
-      description: 'CALVIN KLEIN, TOMMY HILFIGER, GUESS - Stock de ropa al por mayor',
-      label: 'Hit semanal',
-      stock: 'Ilimitado',
-      category: 'Nuevo'
-    },
-    {
-      image: 'https://www.anper.es/wp-content/uploads/2023/07/tapa-troquelada-para-box-palet-photoroompng-photoroom.png',
-      price: 'desde 6,00 €',
-      unit: '/kilogramo',
-      description: 'DHL & Hermes & Amazon & Aliexpress – Paquetes no reclamados',
-      label: 'Hit semanal',
-      stock: 'Ilimitado',
-      category: 'Outlet'
-    },
-    {
-      image: 'https://outletreforged.com/cdn/shop/files/palet-electronica2.png',
-      price: '250,00 €',
-      unit: '/paleta',
-      description: 'Palets Mixtos Muebles, productos de jardín y deportivos',
-      label: 'Hit semanal',
-      stock: 'Ilimitado',
-      category: 'Devoluciones de clientes'
-    },
-    {
-      image: 'https://www.anper.es/wp-content/uploads/2023/07/tapa-troquelada-para-box-palet-photoroompng-photoroom.png',
-      price: '600,00 €',
-      unit: '/completo',
-      description: 'Palets Mixtos Robotica',
-      label: 'Hit semanal',
-      stock: 'Ilimitado',
-      category: 'Mezcla / Devoluciones'
-    },
-    {
-      image: 'https://www.comprarlotes.com/uploads/users/user5037/gallery/9620_img7453.jpeg',
-      price: '10,00 €',
-      unit: '/unidad',
-      description: 'Producto especial en oferta',
-      label: 'Oferta destacada',
-      stock: 'Disponible',
-      category: 'Electrónica'
+      image: '',
+      price: '',
+      unit: '',
+      description: '',
+      label: '',
+      stock: '',
+      category: ''
     }
   ];
+
+  constructor(private productService: ProductService) {}
+
+  ngOnInit(): void {
+    // Al iniciar el componente, cargamos los productos reales
+    this.productService.getAllProducts().subscribe((products: any[]) => {
+      // Mapeamos cada producto de la base de datos al formato que topOffers requiere
+      this.topOffers = products.map((prod) => {
+        return {
+          // 'image' vendrá del primer elemento del array 'images'
+          // o una imagen por defecto si no hay imágenes
+          image: prod.images?.length ? prod.images[0] : 'https://example.com/default-image.png',
+          
+          // 'price' es prod.price
+          price: prod.price,
+
+          // 'unit' se mostrará como prod.country
+          unit: prod.country,
+
+          // 'description' vendrá de prod.title
+          description: prod.title,
+
+          // 'label' es un campo que no existe en la tabla, así que lo falseamos
+          label: 'Sección especial', // O 'Ofertas', o lo que quieras
+
+          // 'stock' vendrá de prod.stock
+          stock: prod.stock,
+
+          // 'category' vendrá de prod.brand
+          category: prod.brand
+        };
+      });
+    });
+  }
 }

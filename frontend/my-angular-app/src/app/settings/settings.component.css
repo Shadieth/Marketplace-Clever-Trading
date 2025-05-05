@@ -1,0 +1,17 @@
+.settings-container {
+    display: flex;
+    min-height: 100vh;
+  }
+  
+  .menu-section {
+    width: 250px;
+    background-color: #ffffff;
+    border-right: 1px solid #ddd;
+  }
+  
+  .content-section {
+    flex: 1;
+    padding: 2rem;
+    background-color: #f9f9f9;
+  }
+  

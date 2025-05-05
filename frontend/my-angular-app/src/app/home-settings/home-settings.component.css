@@ -1,0 +1,273 @@
+.home-wrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+  }
+  
+  .top-cards {
+    display: flex;
+    gap: 1.5rem;
+  }
+  
+  .card {
+    flex: 1;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: visible;
+  }
+  
+  .card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+  }
+  
+  .card mat-icon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    font-size: 28px;
+    color: #333;
+    z-index: 1;
+  }
+  
+  .card .left h3 {
+    margin: 0;
+    font-size: 22px;
+    font-weight: 600;
+    color: #333;
+  }
+  
+  .card button {
+    margin-top: 0.5rem;
+    padding: 0.4rem 1rem;
+    font-weight: 500;
+    color: #007bff;
+    border: 1px solid #007bff;
+    background-color: transparent;
+    border-radius: 3px;
+  }
+  
+  .card button:hover {
+    background-color: #f0f8ff;
+  }
+  
+  mat-card.box {
+    border-radius: 3px;
+    padding: 1.5rem;
+    background-color: #fff;
+  }
+  
+  mat-card h3 {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    color: #333;
+  }
+  
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 1rem;
+  }
+  
+  th, td {
+    padding: 0.75rem;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+  }
+  
+  .estado {
+    color: white;
+    background-color: #d32f2f;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    font-weight: bold;
+    font-size: 0.9rem;
+  }
+  
+  .ver-pedidos {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.5rem 1rem;
+    text-transform: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: 500;
+  }
+  
+  .graph-placeholder {
+    height: 200px;
+    background-color: #eee;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-style: italic;
+  }
+  
+  .grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 1.5rem;
+  }
+  
+  .oferta-linea, .stats-linea {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.5rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .nombre-producto {
+    color: #007BFF;
+    cursor: pointer;
+  }
+  
+  .valor {
+    font-weight: bold;
+  }
+  
+  .fila-mayorista {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.5rem 0;
+  }
+  
+  .bandera {
+    width: 24px;
+    height: 16px;
+    object-fit: contain;
+  }
+  
+  .fila-mensaje {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    border-bottom: 1px solid #eee;
+    padding: 0.5rem 0;
+  }
+  
+  .emisor {
+    flex-grow: 1;
+  }
+  
+  .motivo {
+    color: #555;
+  }
+  .detalle-btn {
+    background-color: #2196F3;
+    border: none;
+    color: white;
+    padding: 0.3rem 0.75rem;
+    font-weight: 500;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.85rem;
+  }
+  
+  .detalle-btn:hover {
+    background-color: #1976D2;
+  }
+  .item-popular, .item-stat {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  
+  .nombre-producto {
+    color: #007bff;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 0.95rem;
+  }
+  
+  .badge {
+    background-color: #29abe2;
+    color: white;
+    font-weight: bold;
+    padding: 0.3rem 0.7rem;
+    border-radius: 4px;
+    font-size: 0.85rem;
+    white-space: nowrap;
+  }
+  .fila-mayorista {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .bandera {
+    width: 20px;
+    height: 14px;
+    object-fit: contain;
+  }
+  
+  .nombre-mayorista {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  
+  .fila-mensaje {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 0.5rem;
+    border-bottom: 1px solid #eee;
+  }
+  
+  .fila-mensaje.alt {
+    background-color: #f9f9f9;
+  }
+  
+  .mensaje-info {
+    flex-grow: 1;
+  }
+  
+  .motivo {
+    margin: 0.3rem 0 0;
+    color: #007bff;
+    font-size: 0.9rem;
+    font-weight: 400;
+  }
+  
+  .ver-btn {
+    background-color: #fff;
+    border: 1px solid #ccc;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.85rem;
+    font-weight: 500;
+  }
+  .bandera {
+    width: 24px;
+    height: 18px;
+    display: inline-block;
+    background-size: contain;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+  
+  .fila-mayorista {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid #eee;
+  }
+  
+  

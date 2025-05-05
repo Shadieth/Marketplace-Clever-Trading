@@ -187,5 +187,39 @@
       margin-top: 20px;
     }
   }
-  
+  /* Estilo para la selección de roles */
+.role-selection {
+  display: flex;
+  gap: 20px;
+  margin: 10px 0;
+}
+
+.role-checkbox {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-weight: 600;
+  color: #333;
+}
+
+.role-checkbox input[type="radio"] {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 2px solid #007bff;
+  margin-right: 8px;
+  transition: background-color 0.3s ease;
+  cursor: pointer;
+}
+
+.role-checkbox input[type="radio"]:checked {
+  background-color: #007bff;
+  border-color: #007bff;
+}
+
+.role-checkbox input[type="radio"]:hover {
+  border-color: #0056b3;
+}
+
   

@@ -18,6 +18,7 @@ export class RegisterComponent {
   email = '';
   password = '';
   confirmPassword = '';
+  role: 'CLIENT' | 'SELLER' | '' = '';
 
   selectedPlan: 'standard' | 'premium' = 'standard';
   showLoginModal = false;
@@ -31,26 +32,35 @@ export class RegisterComponent {
     private router: Router
   ) {}
 
+  onRoleChange(selectedRole: 'CLIENT' | 'SELLER') {
+    this.role = selectedRole;
+  }
+
   onSubmit() {
     this.successMessage = '';
     this.errorMessage = '';
-  
+
     if (this.password !== this.confirmPassword) {
       this.errorMessage = 'Las contraseñas no coinciden.';
       return;
     }
-  
+
+    if (!this.role) {
+      this.errorMessage = 'Por favor, selecciona un rol.';
+      return;
+    }
+
     const payload: RegisterPayload = {
       name: this.name,
       email: this.email,
-      password: this.password
+      password: this.password,
+      role: this.role
     };
-  
+
     this.registerService.registerUser(payload).subscribe({
       next: () => {
         this.successMessage = 'Registro exitoso. Iniciando sesión...';
-  
-        // Iniciar sesión después del registro
+
         this.authService.login(this.email, this.password).subscribe({
           next: (user: any) => {
             this.authService.setSession(user);
@@ -60,7 +70,7 @@ export class RegisterComponent {
             this.errorMessage = 'El registro fue exitoso, pero no se pudo iniciar sesión automáticamente.';
           }
         });
-  
+
         this.resetForm();
       },
       error: (err) => {
@@ -68,13 +78,14 @@ export class RegisterComponent {
         console.error(err);
       }
     });
-  }  
+  }
 
   resetForm() {
     this.name = '';
     this.email = '';
     this.password = '';
     this.confirmPassword = '';
+    this.role = '';
   }
 
   get price(): string {
