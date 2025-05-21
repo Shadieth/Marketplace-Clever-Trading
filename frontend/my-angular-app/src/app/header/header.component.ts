@@ -1,20 +1,36 @@
-import { Component, ElementRef, ViewChild, HostListener, OnInit} from '@angular/core';
-import { NgFor, NgIf, NgStyle, CommonModule} from '@angular/common'; // ✅ Importar NgFor
-import { RouterModule } from '@angular/router';
-import { LoginModalComponent } from '../login-modal/login-modal.component'; // ✅ IMPORTA TU MODAL
+import { Component, ElementRef, ViewChild, HostListener, OnInit } from '@angular/core';
+import { NgFor, NgIf, NgStyle, CommonModule } from '@angular/common';
+import { RouterModule, Router } from '@angular/router';
+import { LoginModalComponent } from '../login-modal/login-modal.component';
 import { AuthService } from '../services/auth.service';
 
 @Component({
   selector: 'app-header',
-  standalone: true, // Indicar que este es un componente independiente
+  standalone: true,
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css'],
-  imports: [NgFor, NgIf, NgStyle, RouterModule, LoginModalComponent] // ✅ Agregar NgFor en imports
+  imports: [NgFor, NgIf, NgStyle, RouterModule, LoginModalComponent]
 })
 export class HeaderComponent implements OnInit {
-  showLoginModal = false; // ✅ NECESARIO PARA ABRIR/CERRAR EL MODAL
-  logoPath: string = 'assets/logoclevertrading-web.png'; // Ruta de Imagen LOGO
+  showLoginModal = false;
+  logoPath: string = 'assets/logoclevertrading-web.png';
   userName: string | null = null;
+  isLoggedIn: boolean = false;
+  userImage: string = 'assets/default-user.png';
+
+  selectedCategory: string = 'products';
+  isDropdownOpen: boolean = false;
+  isPlaceholderVisible: boolean = true;
+
+  @ViewChild('categoryButton', { static: false }) categoryButton!: ElementRef;
+  isCategoryMenuOpen: boolean = false;
+  menuPosition = { top: '50px', left: '0px' };
+
+  constructor(private authService: AuthService, private router: Router) {
+    if (this.isLoggedIn) {
+      this.userImage = 'assets/user-profile.jpg';
+    }
+  }
 
   ngOnInit(): void {
     this.refreshSessionStatus();
@@ -27,7 +43,7 @@ export class HeaderComponent implements OnInit {
 
   logout() {
     this.authService.clearSession();
-    window.location.reload(); // refresca el header
+    window.location.reload();
   }
 
   openLoginModal() {
@@ -36,47 +52,41 @@ export class HeaderComponent implements OnInit {
 
   closeLoginModal() {
     this.showLoginModal = false;
-    this.refreshSessionStatus(); // al cerrar modal, actualiza sesión
+    this.refreshSessionStatus();
   }
-    // Lista de opciones del desplegable
-    categories = [
-      { name: 'Productos', value: 'products' },
-      { name: 'Lotes y stocks', value: 'stocks' },
-      { name: 'Top ofertas', value: 'offers' }
-    ];
-  
-    selectedCategory: string = 'products';
-    isDropdownOpen: boolean = false;
-    isPlaceholderVisible: boolean = true; // Placeholder visible por defecto
-  
-    // Método para alternar el desplegable
-    toggleDropdown(event: Event) {
-      event.stopPropagation(); // Evita que el evento se propague y cierre inmediatamente
-      this.isDropdownOpen = !this.isDropdownOpen;
-    }
-  
-    // Método para seleccionar una categoría y cerrar el menú
-    selectCategory(value: string) {
-      this.selectedCategory = value;
-      this.isDropdownOpen = false; // Cierra el menú después de seleccionar
-    }
-  
-    getCategoryName(): string {
-      const category = this.categories.find(cat => cat.value === this.selectedCategory);
-      return category ? category.name : 'Selecciona';
-    }
-  
-    // Detectar clics en cualquier parte de la pantalla
-    @HostListener('document:click', ['$event'])
-    closeDropdown(event: Event) {
-      this.isDropdownOpen = false; // Cierra el menú cuando se hace clic fuera
-    }
-    // Ocultar placeholder al enfocar el input
-    hidePlaceholder() {
-      this.isPlaceholderVisible = false;
-    }
 
-  // Mostrar placeholder si el input está vacío al perder el foco
+  // Dropdown de búsqueda
+  categories = [
+    { name: 'Productos', value: 'products' },
+    { name: 'Lotes y stocks', value: 'stocks' },
+    { name: 'Top ofertas', value: 'offers' }
+  ];
+
+  toggleDropdown(event: Event) {
+    event.stopPropagation();
+    this.isDropdownOpen = !this.isDropdownOpen;
+  }
+
+  selectCategory(value: string) {
+    this.selectedCategory = value;
+    this.isDropdownOpen = false;
+  }
+
+  getCategoryName(): string {
+    const category = this.categories.find(cat => cat.value === this.selectedCategory);
+    return category ? category.name : 'Selecciona';
+  }
+
+  @HostListener('document:click', ['$event'])
+  closeDropdown(event: Event) {
+    this.isDropdownOpen = false;
+    this.isCategoryMenuOpen = false;
+  }
+
+  hidePlaceholder() {
+    this.isPlaceholderVisible = false;
+  }
+
   showPlaceholder(event: Event) {
     const input = event.target as HTMLInputElement;
     if (!input.value) {
@@ -84,39 +94,24 @@ export class HeaderComponent implements OnInit {
     }
   }
 
-  // Simulación de usuario autenticado
-  isLoggedIn: boolean = false; // Cambia a true si el usuario está autenticado
-  userImage: string = 'assets/default-user.png'; // Imagen por defecto
-
-  // Si el usuario está autenticado, cambia la imagen a la del usuario
-  constructor(private authService: AuthService) {
-    if (this.isLoggedIn) {
-      this.userImage = 'assets/user-profile.jpg'; // Imagen del usuario autenticado
-    }
-  }
-  // Listado de Categorias
-  @ViewChild('categoryButton', { static: false }) categoryButton!: ElementRef; // Referencia al botón
-
-  isCategoryMenuOpen: boolean = false;
-  menuPosition = { top: '50px', left: '0px' };
-
+  // Menú de categorías
   categoryMenu = [
-    { name: 'Alimentación', icon: 'restaurant' },
-    { name: 'Automotriz', icon: 'directions_car' },
-    { name: 'Calzado', icon: 'checkroom' },
-    { name: 'Casa, Jardín y oficina', icon: 'home' },
-    { name: 'Construcción e industria', icon: 'construction' },
-    { name: 'Deporte y afición', icon: 'sports_soccer' },
-    { name: 'Electrodomésticos grandes', icon: 'kitchen' },
-    { name: 'Electrodomésticos pequeños', icon: 'blender' },
-    { name: 'Electrónica', icon: 'memory' },
-    { name: 'Liquidación de empresas', icon: 'storefront' },
-    { name: 'Muebles', icon: 'weekend' },
-    { name: 'Para niños', icon: 'child_friendly' },
-    { name: 'Relojes y joyería', icon: 'watch' },
-    { name: 'Ropa', icon: 'checkroom' },
-    { name: 'Salud y belleza', icon: 'spa' },
-    { name: 'Teléfonos', icon: 'smartphone' }
+    { name: 'Alimentación', icon: 'restaurant', value: 'ALIMENTACION' },
+    { name: 'Automotriz', icon: 'directions_car', value: 'AUTOMOTRIZ' },
+    { name: 'Calzado', icon: 'checkroom', value: 'CALZADO' },
+    { name: 'Casa, Jardín y oficina', icon: 'home', value: 'CASA_JARDIN_Y_OFICINA' },
+    { name: 'Construcción e industria', icon: 'construction', value: 'CONSTRUCCION_E_INDUSTRIA' },
+    { name: 'Deporte y afición', icon: 'sports_soccer', value: 'DEPORTE_Y_AFICION' },
+    { name: 'Electrodomésticos grandes', icon: 'kitchen', value: 'ELECTRODOMESTICOS_GRANDES' },
+    { name: 'Electrodomésticos pequeños', icon: 'blender', value: 'ELECTRODOMESTICOS_PEQUENOS' },
+    { name: 'Electrónica', icon: 'memory', value: 'ELECTRONICA' },
+    { name: 'Liquidación de empresas', icon: 'storefront', value: 'LIQUIDACION_EMPRESAS' }, // ✅ corregido
+    { name: 'Muebles', icon: 'weekend', value: 'MUEBLES' },
+    { name: 'Para niños', icon: 'child_friendly', value: 'PARA_NINOS' },
+    { name: 'Relojes y joyería', icon: 'watch', value: 'RELOJES_Y_JOYERIA' },
+    { name: 'Ropa', icon: 'checkroom', value: 'ROPA' },
+    { name: 'Salud y belleza', icon: 'spa', value: 'SALUD_Y_BELLEZA' },
+    { name: 'Teléfonos', icon: 'smartphone', value: 'TELEFONOS' }
   ];
 
   toggleCategoryMenu(event: Event) {
@@ -126,9 +121,14 @@ export class HeaderComponent implements OnInit {
     if (this.isCategoryMenuOpen) {
       const buttonRect = this.categoryButton.nativeElement.getBoundingClientRect();
       this.menuPosition = {
-        top: `${buttonRect.bottom + window.scrollY}px`, // Debajo del botón
-        left: `${buttonRect.left + window.scrollX}px` // Alineado con el botón
+        top: `${buttonRect.bottom + window.scrollY}px`,
+        left: `${buttonRect.left + window.scrollX}px`
       };
     }
   }
+
+  goToCategory(category: { name: string; icon: string; value: string }) {
+    this.isCategoryMenuOpen = false;
+    this.router.navigate(['/categorias', category.value]);
+  }  
 }

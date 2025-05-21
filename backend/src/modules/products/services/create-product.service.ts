@@ -12,8 +12,8 @@ export class CreateProductService {
   }
   // Método creado por YOEL
   // Método agregado para obtener todos los productos
-  async findAll(): Promise<Product[]> {
+  /*async findAll(): Promise<Product[]> {
     return this.productRepository.findAll();
-  }
+  }*/
 }
 

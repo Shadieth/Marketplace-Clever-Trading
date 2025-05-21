@@ -1,0 +1,29 @@
+<h2>Productos en {{ getDisplayName() }}</h2>
+
+<div *ngIf="products.length === 0">No hay productos en esta categoría.</div>
+
+<div class="category-products-grid">
+  <div class="category-product-card" *ngFor="let product of products">
+    <div class="category-product-image">
+      <span class="category-product-label">
+        <span class="material-icons">local_offer</span>
+      </span>
+      <img *ngIf="product.images?.length" [src]="product.images[0]" alt="Imagen de producto" />
+    </div>
+    <div class="category-product-details">
+      <span class="category-product-price">
+        <strong>{{ product.price }}€</strong>
+        <span class="category-product-country">{{ product.country }}</span>
+      </span>
+      <p class="category-product-title">{{ product.title }}</p>
+      <div class="category-product-meta">
+        <span class="category-product-stock">
+          <span class="material-icons">shopping_cart</span> {{ product.stock }}
+        </span>
+        <span class="category-product-category">
+          <span class="material-icons">inventory</span> {{ getDisplayName() }}
+        </span>
+      </div>
+    </div>
+  </div>
+</div>

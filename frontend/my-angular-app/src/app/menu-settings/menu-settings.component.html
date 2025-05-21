@@ -1,4 +1,26 @@
 <mat-nav-list>
+  <!-- 🔒 Secciones solo visibles para administradores -->
+  <ng-container *ngIf="isAdmin">
+    <mat-divider></mat-divider>
+
+    <a mat-list-item routerLink="/settings/admin-usuarios">
+      <mat-icon>manage_accounts</mat-icon> Gestión de usuarios
+    </a>
+    
+    <a mat-list-item routerLink="/settings/admin-productos">
+      <mat-icon>inventory_2</mat-icon> Gestión global de productos
+    </a>
+    
+    <a mat-list-item routerLink="/settings/admin-estadisticas">
+      <mat-icon>bar_chart</mat-icon> Estadísticas generales
+    </a>
+    
+    <a mat-list-item routerLink="/settings/admin-control">
+      <mat-icon>admin_panel_settings</mat-icon> Panel de control
+    </a>    
+    
+    <mat-divider></mat-divider>
+  </ng-container>
 
     <a mat-list-item routerLink="/settings">
         <mat-icon>home</mat-icon> De oficina

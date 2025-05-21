@@ -17,4 +17,11 @@ export class ProductService {
   getAllProducts(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+  getProductsByCategory(category: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}?category=${category}`);
+  }
+
+  deleteProduct(productId: string): Observable<void> {
+    return this.http.delete<void>(`${this.apiUrl}/${productId}`);
+  }
 }

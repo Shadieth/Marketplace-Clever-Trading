@@ -1,0 +1,22 @@
+<h2 class="productos-titulo">Productos por categoría</h2>
+
+<label for="categoria">Selecciona una categoría:</label>
+<select id="categoria" [(ngModel)]="selectedCategory" (change)="loadProductsByCategory()">
+  <option *ngFor="let cat of categorias" [value]="cat">{{ cat }}</option>
+</select>
+
+<div *ngIf="products.length === 0" class="mensaje-vacio">
+  No hay productos para esta categoría.
+</div>
+
+<div class="productos-wrapper" *ngIf="products.length > 0">
+  <div *ngFor="let product of products" class="producto-card">
+    <div class="producto-info">
+      <span class="producto-nombre">{{ product.title }}</span>
+      <span class="producto-categoria">({{ product.category }})</span>
+    </div>
+    <button mat-stroked-button color="warn" (click)="deleteProduct(product.id)">
+      Eliminar
+    </button>
+  </div>
+</div>

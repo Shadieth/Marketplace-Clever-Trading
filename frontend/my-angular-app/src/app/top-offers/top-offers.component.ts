@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgFor, NgIf } from '@angular/common';
-import { ProductService } from '../services/product.service';
+// ❌ Quitamos la importación del servicio
+// import { ProductService } from '../services/product.service';
 
 @Component({
   selector: 'app-top-offers',
@@ -11,52 +12,32 @@ import { ProductService } from '../services/product.service';
 })
 export class TopOffersComponent implements OnInit {
 
-  // Array que antes era estático
+  // Cargamos contenido estático o dejamos vacío
   topOffers = [
-    // Aquí puedes dejar un ejemplo vacío o con un par de objetos falsos si quieres
-    // pero se sobrescribirá al cargar los datos del backend
     {
-      image: '',
-      price: '',
-      unit: '',
-      description: '',
-      label: '',
-      stock: '',
-      category: ''
+      image: 'https://via.placeholder.com/300x200.png?text=Oferta+1',
+      price: '99.99',
+      unit: 'España',
+      description: 'Ejemplo de producto en oferta',
+      label: 'Top Oferta',
+      stock: 12,
+      category: 'Electrónica'
+    },
+    {
+      image: 'https://via.placeholder.com/300x200.png?text=Oferta+2',
+      price: '59.99',
+      unit: 'Italia',
+      description: 'Otro producto en promoción',
+      label: 'Top Oferta',
+      stock: 5,
+      category: 'Hogar'
     }
   ];
 
-  constructor(private productService: ProductService) {}
+  constructor() {} // ❌ Quitamos ProductService del constructor
 
   ngOnInit(): void {
-    // Al iniciar el componente, cargamos los productos reales
-    this.productService.getAllProducts().subscribe((products: any[]) => {
-      // Mapeamos cada producto de la base de datos al formato que topOffers requiere
-      this.topOffers = products.map((prod) => {
-        return {
-          // 'image' vendrá del primer elemento del array 'images'
-          // o una imagen por defecto si no hay imágenes
-          image: prod.images?.length ? prod.images[0] : 'https://example.com/default-image.png',
-          
-          // 'price' es prod.price
-          price: prod.price,
-
-          // 'unit' se mostrará como prod.country
-          unit: prod.country,
-
-          // 'description' vendrá de prod.title
-          description: prod.title,
-
-          // 'label' es un campo que no existe en la tabla, así que lo falseamos
-          label: 'Sección especial', // O 'Ofertas', o lo que quieras
-
-          // 'stock' vendrá de prod.stock
-          stock: prod.stock,
-
-          // 'category' vendrá de prod.brand
-          category: prod.brand
-        };
-      });
-    });
+    // ❌ Quitamos llamada al backend
+    // this.productService.getAllProducts().subscribe((products: any[]) => { ... });
   }
 }

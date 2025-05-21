@@ -1,0 +1,11 @@
+<h2 class="usuarios-titulo">Usuarios registrados</h2>
+
+<div class="usuarios-wrapper">
+  <div *ngFor="let user of users" class="usuario-card">
+    <div class="usuario-email">{{ user.email }}</div>
+    <button mat-stroked-button color="warn" (click)="deleteUser(user.id)">
+      Eliminar
+    </button>
+  </div>
+</div>
+
