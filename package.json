@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "build:back": "cd backend && tsc",
-    "build:front": "cd frontend && ng build",
+    "build:front": "cd frontend && npx ng build",
     "build": "npm run build:back && npm run build:front",
     "start:back": "cd backend && node dist/index.js",
     "start:front": "cd frontend && npm run start",
