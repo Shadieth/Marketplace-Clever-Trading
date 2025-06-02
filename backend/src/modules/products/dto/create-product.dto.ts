@@ -1,27 +1,28 @@
 import { IsString, IsEnum, IsNumber, IsArray, IsOptional, IsUUID } from 'class-validator';
-import { ShippingOptions, Country, Category } from '@prisma/client'; // Asegúrate de que estos tipos estén correctamente importados
+import { ShippingOptions, Country, Category } from '@prisma/client'; // Enums importados desde Prisma
 
+// DTO para crear un producto
 export class CreateProductDto {
-  @IsString()
+  @IsString()   // Valida que sea una cadena de texto
   title: string;
 
-  @IsString()
+  @IsString() // Validación de tipo string
   description: string;
 
-  @IsNumber()
-  price: number;  // Se mantiene como número en el DTO, y se convierte en Decimal en el repositorio
+  @IsNumber() // Valida que sea un número
+  price: number;  // Se maneja como número aquí, y Prisma lo convierte a Decimal internamente
 
-  @IsNumber()
+  @IsNumber() // Número entero que representa el pedido mínimo
   minOrder: number;
 
-  @IsNumber()
+  @IsNumber() // Stock disponible
   stock: number;
 
-  @IsEnum(Country)
-  country: Country;  // Validación de tipo Country (enum)
+  @IsEnum(Country) // Valida que el valor pertenezca al enum Country
+  country: Country;  
 
   @IsString()
-  @IsOptional()
+  @IsOptional() // Este campo es opcional
   brand?: string;  // Marca es opcional
 
   @IsArray()

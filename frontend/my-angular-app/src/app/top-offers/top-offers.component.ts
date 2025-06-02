@@ -10,6 +10,7 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrls: ['./top-offers.component.css'],
   imports: [NgFor, NgIf]
 })
+// Este componente muestra ofertas destacadas de productos
 export class TopOffersComponent implements OnInit {
 
   // Cargamos contenido estático o dejamos vacío

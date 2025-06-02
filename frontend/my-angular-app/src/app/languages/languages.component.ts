@@ -8,6 +8,7 @@ import { NgFor } from '@angular/common';
   styleUrls: ['./languages.component.css'],
   imports: [NgFor]
 })
+// Este componente muestra una lista de idiomas disponibles con sus respectivas banderas
 export class LanguagesComponent {
   languages = [
     { name: 'Español', flagClass: 'flag-icon-es' },

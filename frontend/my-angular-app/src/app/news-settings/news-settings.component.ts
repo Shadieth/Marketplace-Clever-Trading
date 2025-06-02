@@ -11,4 +11,4 @@ import { MatCardModule } from '@angular/material/card';
 })
 export class NewsSettingsComponent {
 
-}
+} // Este componente es un marcador de posición para la configuración de noticias

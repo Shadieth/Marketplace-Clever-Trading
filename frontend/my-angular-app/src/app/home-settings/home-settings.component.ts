@@ -20,7 +20,7 @@ import { MatDividerModule } from '@angular/material/divider';
   templateUrl: './home-settings.component.html',
   styleUrls: ['./home-settings.component.css']
 })
-
+// Este componente muestra estadísticas, ofertas populares, mayoristas y mensajes recientes en la página de inicio
 export class HomeSettingsComponent {
   ofertasPopulares = [
     { nombre: 'Productos Heinz: Kétchup, mayonesa, mostaza, salsa barbacoa', vistas: 26383 },

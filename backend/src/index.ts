@@ -4,6 +4,8 @@ import { ValidationPipe } from '@nestjs/common';
 import { PrismaService } from './prisma/prisma.service';
 import 'dotenv/config';
 
+// Importamos las dependencias necesarias para iniciar la aplicación NestJS
+// y configurar CORS, validaciones y Prisma
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
   const port = process.env.PORT ?? 3001;

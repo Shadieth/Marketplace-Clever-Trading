@@ -12,6 +12,7 @@ import { HttpClientModule } from '@angular/common/http';
   templateUrl: './login-modal.component.html',
   styleUrls: ['./login-modal.component.css']
 })
+// Este componente representa un modal de inicio de sesión que permite a los usuarios ingresar sus credenciales para acceder a la aplicación
 export class LoginModalComponent {
   @Output() close = new EventEmitter<void>();
 
@@ -19,11 +20,12 @@ export class LoginModalComponent {
   password: string = '';
   errorMessage: string = '';
 
+  // El constructor inyecta el servicio de autenticación y el enrutador
   constructor(
     private authService: AuthService,
     private router: Router
   ) {}
-
+  // Método para manejar el inicio de sesión
   onLogin() {
     this.errorMessage = '';
 
@@ -40,7 +42,7 @@ export class LoginModalComponent {
       }
     });
   }
-
+  // Método para manejar el registro de nuevos usuarios
   closeModal() {
     this.close.emit();
   }

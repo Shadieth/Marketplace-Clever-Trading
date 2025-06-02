@@ -2,10 +2,12 @@ import { Injectable, NotFoundException } from '@nestjs/common';
 import { UserRepository } from '../users.repository';
 import { User } from '../interfaces/user.interface';
 
-@Injectable()
+@Injectable() //
 export class GetAllUsersService {
+  // Inyectamos el repositorio de usuarios para acceder a la base de datos
   constructor(private readonly userRepository: UserRepository) {}
 
+  // Método para obtener todos los usuarios
   async getAllUsers(): Promise<Omit<User, 'password'>[]> {
     try {
       const users = await this.userRepository.findAll();

@@ -11,6 +11,8 @@ import { AdminStatisticsSettingsComponent } from '../admin-statistics-settings/a
 import { AdminControlSettingsComponent } from '../admin-control-settings/admin-control-settings.component';
 import { AdminGuard } from '../guards/admin.guard';
 
+// settings.routes.ts
+// Este archivo define las rutas hijas del componente de configuración de la aplicación
 export const settingsRoutes: Routes = [
   {
     path: 'settings',

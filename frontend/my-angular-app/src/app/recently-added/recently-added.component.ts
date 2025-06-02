@@ -8,6 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrls: ['./recently-added.component.css'],
   imports: [NgFor, NgIf]
 })
+// Este componente muestra productos recientemente añadidos con sus detalles
 export class RecentlyAddedComponent {
   recentlyAddedProducts = [
     { image: 'https://outletreforged.com/cdn/shop/files/palet-electronica2.png', price: '15,99 €', unit: '/unidad', description: 'Nuevo smartphone con tecnología avanzada', label: 'Nuevo', stock: 'Disponible', category: 'Electrónica' },

@@ -5,6 +5,7 @@ import { ProductService } from '../services/product.service';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
+// Este componente permite a los usuarios autenticados agregar un nuevo producto a la tienda.
 @Component({
   selector: 'app-add-product',
   templateUrl: './add-product.component.html',
@@ -12,6 +13,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   imports: [CommonModule, FormsModule]
 })
+// Asegúrate de que el archivo HTML y CSS estén correctamente configurados para este componente
 export class AddProductComponent implements OnInit {
   product = {
     name: '',
@@ -52,12 +54,14 @@ export class AddProductComponent implements OnInit {
     private productService: ProductService
   ) {}
 
+  // Este método se ejecuta al inicializar el componente.
   ngOnInit(): void {
     if (!this.authService.isLoggedIn()) {
       this.router.navigate(['/']);
     }
   }
 
+  // Este método se ejecuta cuando el usuario cambia la opción de "unlimited".
   onUnlimitedChange() {
     this.quantityDisabled = this.product.unlimited;
     if (this.product.unlimited) {
@@ -65,6 +69,7 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  // Este método se ejecuta cuando el usuario cambia la opción de "pago en efectivo".
   onToggleNoDeclarar(event: any) {
     if (event.target.checked) {
       this.product.payMethods = {
@@ -77,6 +82,7 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  // Este método se ejecuta cuando el usuario cambia la opción de "pago en efectivo".
   onFileChange(event: any, index: number) {
     const file = event.target.files[0];
     if (file) {
@@ -88,6 +94,7 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  // Este método se ejecuta cuando el usuario cambia la opción de "pago en efectivo".
   toggleCountrySelection(country: string) {
     const selected = this.product.shippingCountries[country];
     this.product.shippingCountries[country] = !selected;
@@ -102,6 +109,7 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  // Este método se ejecuta cuando el usuario selecciona un archivo para una imagen.
   onFileSelect(event: any, index: number) {
     const file = event.target.files[0];
     if (file) {
@@ -113,6 +121,7 @@ export class AddProductComponent implements OnInit {
     }
   }
 
+  // Este método se ejecuta cuando el usuario elimina una imagen
   removeImage(index: number) {
     this.product.images[index] = null;
   }
@@ -181,6 +190,7 @@ export class AddProductComponent implements OnInit {
   
     console.log('Objeto enviado al backend:', formattedProduct);
   
+    // Llamar al servicio para agregar el producto, pasando el objeto formateado.
     this.productService.addProduct(formattedProduct).subscribe(
       (response) => {
         alert('Producto creado exitosamente');

@@ -8,6 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrls: ['./offers.component.css'],
   imports: [NgFor, NgIf]
 })
+// Este componente muestra una lista de ofertas disponibles con sus detalles
 export class OffersComponent {
   offers = [
     {

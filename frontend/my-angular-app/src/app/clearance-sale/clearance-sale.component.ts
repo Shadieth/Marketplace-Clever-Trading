@@ -8,6 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrls: ['./clearance-sale.component.css'],
   imports: [NgFor, NgIf]
 })
+// Este componente muestra productos en liquidación con detalles como precio, unidad, descripción, etiqueta, stock y categoría
 export class ClearanceSaleComponent {
   clearanceProducts = [
     { image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTyZ-YOwM4Lzoy6yabMc3iViyGBiS1FGXfMmQ&s', price: '3,99 €', unit: '/unidad', description: 'Ropa en liquidación', label: 'Liquidación', stock: 'Stock limitado', category: 'Moda' },

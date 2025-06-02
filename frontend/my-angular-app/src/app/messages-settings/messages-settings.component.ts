@@ -9,4 +9,5 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './messages-settings.component.html',
   styleUrl: './messages-settings.component.css'
 })
+// Este componente es un marcador de posición para la configuración de mensajes
 export class MessagesSettingsComponent {}

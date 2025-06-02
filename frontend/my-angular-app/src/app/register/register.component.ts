@@ -13,6 +13,7 @@ import { AuthService } from '../services/auth.service';
   templateUrl: './register.component.html',
   styleUrl: './register.component.css'
 })
+// Este componente maneja el registro de nuevos usuarios, incluyendo la selección de roles y planes.
 export class RegisterComponent {
   name = '';
   email = '';
@@ -31,11 +32,11 @@ export class RegisterComponent {
     private authService: AuthService,
     private router: Router
   ) {}
-
+  // Método para manejar el cambio de plan seleccionado
   onRoleChange(selectedRole: 'CLIENT' | 'SELLER') {
     this.role = selectedRole;
   }
-
+  // Método para manejar el cambio de plan seleccionado
   onSubmit() {
     this.successMessage = '';
     this.errorMessage = '';
@@ -79,7 +80,7 @@ export class RegisterComponent {
       }
     });
   }
-
+  // Método para mostrar el modal de inicio de sesión
   resetForm() {
     this.name = '';
     this.email = '';

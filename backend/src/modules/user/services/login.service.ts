@@ -7,8 +7,11 @@ let currentUser: User | null = null;
 
 @Injectable()
 export class LoginService {
+  // Inyectamos el repositorio de usuarios para acceder a la base de datos
+  // y realizar operaciones de autenticación
   constructor(private readonly userRepository: UserRepository) {}
 
+  // Método para iniciar sesión
   async login(email: string, password: string): Promise<Omit<User, 'password'>> {
     const user = await this.userRepository.findByEmail(email);
     if (!user) throw new UnauthorizedException('Credenciales inválidas');

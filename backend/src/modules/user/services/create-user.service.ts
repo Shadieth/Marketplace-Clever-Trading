@@ -4,10 +4,14 @@ import { User } from '../interfaces/user.interface';
 import * as bcrypt from 'bcrypt';
 import { Role, Country } from '@prisma/client';
 
-@Injectable()
+
+@Injectable() // Asegúrate de que el repositorio esté bien importado
 export class CreateUserService {
+  // Inyectamos el repositorio de usuarios para acceder a la base de datos
+  // y realizar operaciones CRUD sobre los usuarios
   constructor(private readonly userRepository: UserRepository) {}
 
+  // Método para crear un nuevo usuario
   async createUser(data: { 
     name: string; 
     email: string; 

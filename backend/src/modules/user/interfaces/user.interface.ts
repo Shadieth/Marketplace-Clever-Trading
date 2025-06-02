@@ -1,5 +1,6 @@
 import { Role, Country } from '@prisma/client';
 
+// Interfaz para el usuario
 export interface User {
   id?: string;        // UUID opcional (puede ser generado por la BD)
   email: string;      // Correo único del usuario

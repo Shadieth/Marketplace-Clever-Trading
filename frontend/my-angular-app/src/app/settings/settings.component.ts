@@ -14,4 +14,5 @@ import { MenuSettingsComponent } from '../menu-settings/menu-settings.component'
   templateUrl: './settings.component.html',
   styleUrls: ['./settings.component.css']
 })
+// Este componente es un marcador de posición para la configuración de la aplicación
 export class SettingsComponent {}

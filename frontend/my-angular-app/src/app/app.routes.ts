@@ -6,6 +6,8 @@ import { AddProductComponent } from './add-product/add-product.component';
 import { settingsRoutes } from './settings/settings.routes';
 import { CategoryPageComponent } from './category-page/category-page.component';
 
+// app.routes.ts
+// Este archivo define las rutas principales de la aplicación, incluyendo la ruta de inicio, registro, agregar producto y las rutas hijas de configuración.
 export const routes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'register', component: RegisterComponent },

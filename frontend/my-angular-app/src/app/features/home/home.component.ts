@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 
-
+// Define una interfaz para los productos
 export interface Product {
   id: number;
   title: string;
@@ -64,6 +64,7 @@ export interface Product {
      .category-card { border: 1px solid #ddd; padding: 1rem; text-align: center; }`
   ]
 })
+// Este componente representa la página de inicio de la aplicación, mostrando productos destacados y categorías
 export class HomeComponent implements OnInit {
   featuredProducts: Product[] = [
     {
@@ -92,10 +93,13 @@ export class HomeComponent implements OnInit {
     }
   ];
 
+  // Inyectamos el Router para navegar a otras páginas
   constructor(private router: Router) {}
 
+  // Este método se ejecuta al inicializar el componente
   ngOnInit(): void {}
 
+  // Método para navegar a la página de la tienda
   navigateToShop(): void {
     this.router.navigate(['/shop']);
   }

@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
 })
 export class AdminStatisticsSettingsComponent {
 
-}
+} // Este componente es un marcador de posición para la configuración de estadísticas del administrador

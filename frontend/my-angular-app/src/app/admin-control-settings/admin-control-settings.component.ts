@@ -9,4 +9,4 @@ import { Component } from '@angular/core';
 })
 export class AdminControlSettingsComponent {
 
-}
+} // Este componente es un marcador de posición para la configuración del control de administrador

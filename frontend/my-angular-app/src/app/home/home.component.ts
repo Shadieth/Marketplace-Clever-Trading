@@ -23,5 +23,6 @@ import { NewsletterComponent } from '../newsletter/newsletter.component';
   ]
 })
 
-export class HomeComponent {}
+export class HomeComponent {}  // Este componente representa la página de inicio de la aplicación, que incluye secciones como ofertas destacadas, ofertas, liquidación, productos recientemente añadidos, comentarios, idiomas y boletín informativo.
+// El componente utiliza otros componentes para estructurar la página de inicio y mostrar diferentes secciones de contenido.
 

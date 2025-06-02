@@ -5,6 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
+// Servicio para manejar productos
 export class ProductService {
   private apiUrl = 'http://localhost:3001/products';
 
@@ -17,10 +18,11 @@ export class ProductService {
   getAllProducts(): Observable<any[]> {
     return this.http.get<any[]>(this.apiUrl);
   }
+  // Método para obtener un producto por ID
   getProductsByCategory(category: string): Observable<any[]> {
     return this.http.get<any[]>(`${this.apiUrl}?category=${category}`);
   }
-
+  // Método para actualizar un producto
   deleteProduct(productId: string): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/${productId}`);
   }

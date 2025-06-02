@@ -9,6 +9,7 @@ import { MatCardModule } from '@angular/material/card';
   templateUrl: './orders-settings.component.html',
   styleUrl: './orders-settings.component.css'
 })
+// Este componente es un marcador de posición para la configuración de pedidos
 export class OrdersSettingsComponent {
 
 }

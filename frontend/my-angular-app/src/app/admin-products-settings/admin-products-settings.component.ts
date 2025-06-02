@@ -11,6 +11,7 @@ import { ProductService } from '../services/product.service';
   templateUrl: './admin-products-settings.component.html',
   styleUrls: ['./admin-products-settings.component.css']
 })
+// Este componente permite a los administradores gestionar productos por categoría
 export class AdminProductsSettingsComponent implements OnInit {
   products: any[] = [];
   selectedCategory: string = '';
@@ -33,13 +34,16 @@ export class AdminProductsSettingsComponent implements OnInit {
     'TELEFONOS'
   ];
 
+  // Inyectamos el servicio de productos para acceder a los datos
   constructor(private productService: ProductService) {}
 
+  // Este método se ejecuta al inicializar el componente
   ngOnInit(): void {
     this.selectedCategory = this.categorias[0]; // primera categoría
     this.loadProductsByCategory();
   }
 
+  // Carga los productos de la categoría seleccionada
   loadProductsByCategory(): void {
     if (this.selectedCategory) {
       this.productService.getProductsByCategory(this.selectedCategory)
@@ -47,6 +51,7 @@ export class AdminProductsSettingsComponent implements OnInit {
     }
   }
 
+  // Método para cambiar la categoría seleccionada
   deleteProduct(productId: string): void {
     if (confirm('¿Estás seguro de eliminar este producto?')) {
       this.productService.deleteProduct(productId).subscribe(() => {

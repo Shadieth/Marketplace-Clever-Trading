@@ -8,6 +8,7 @@ import { NgFor, NgIf } from '@angular/common';
   styleUrls: ['./comments.component.css'],
   imports: [NgFor, NgIf]
 })
+// Este componente muestra comentarios de usuarios sobre Clever Trading, incluyendo nombre, avatar y texto del comentario
 export class CommentsComponent {
   comments = [
     { 

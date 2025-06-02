@@ -16,16 +16,19 @@ export class AdminUsersSettingsComponent implements OnInit {
 
   constructor(private authService: AuthService) {}
 
+  // Este componente permite a los administradores gestionar usuarios
   ngOnInit(): void {
     this.loadUsers();
   }
 
+  // Carga la lista de usuarios desde el servicio de autenticación
   loadUsers(): void {
     this.authService.getAllUsers().subscribe((users: any[]) => {
       this.users = users;
     });
   }
 
+  // Método para eliminar un usuario
   deleteUser(userId: string): void {
     if (confirm('¿Estás seguro de eliminar este usuario?')) {
       this.authService.deleteUser(userId).subscribe(() => {

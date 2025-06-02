@@ -6,4 +6,5 @@ import { provideClientHydration, withEventReplay } from '@angular/platform-brows
 
 export const appConfig: ApplicationConfig = {
   providers: [provideZoneChangeDetection({ eventCoalescing: true }), provideRouter(routes), provideClientHydration(withEventReplay()), provideHttpClient(withInterceptorsFromDi())]
-};
+}; // Configuración de la aplicación Angular
+// Aquí se definen los proveedores necesarios para la aplicación, como el enrutador, el cliente HTTP y la detección de cambios de zona
